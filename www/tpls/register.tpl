@@ -5,11 +5,12 @@
         <col width="15%">
         <col width="85%">
       </colgroup>
-      <tr>
+      <tr></tr>
         <th>邮箱：</th>
         <td>
           <div class="input">
             <input type="" name="email" value="" id="email">
+            <span class="iconfont icon-right"></span>
             <div class="loader-inner ball-clip-rotate">
               <div></div>
             </div>
@@ -21,6 +22,7 @@
         <td>
           <div class="input">
             <input type="" name="username" value="" id="username">
+            <span class="iconfont icon-right"></span>
             <div class="loader-inner ball-clip-rotate">
               <div></div>
             </div>
@@ -29,7 +31,12 @@
       </tr>
       <tr>
         <th>密码：</th>
-        <td><div class="input"><input type="" name="password" value="" id="password"></div></td>
+        <td>
+          <div class="input">
+            <input type="" name="password" value="" id="password">
+            <span class="iconfont icon-right"></span>
+          </div>
+        </td>
       </tr>
       <tr>
         <th></th>

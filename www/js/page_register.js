@@ -6,13 +6,12 @@ function init(){
   $("#username").blur(function(){
     var _this=$(this);
     var user=$("input[name=username]").val();
-    if(user.length<=1 || user==username) return false;
-    if(user.length<=6){
-      console.log("用户名不得少于6位")
+    if(user.length<=5){
       _this.parent().addClass("error");
-      _this.val("");
-      _this.attr("placeholder","用户名不能少于6位！");
+      _this.Tips({value:"用户名不能少于6位！"});
       User=false;
+      return false;
+    }else if(user==username){
       return false;
     }
     var sendData={
@@ -35,9 +34,10 @@ function init(){
         if(typeof data.id=="object"){
           User=true;
           _this.parent().removeClass("error");
+          _this.parent().addClass("right");
         }else{
           _this.parent().addClass("error");
-          console.log("用户名已经被注册！")
+          _this.Tips({value:"用户名已经被注册！"});
         }
       },
     });
@@ -49,16 +49,13 @@ function init(){
     var email=$("input[name=email]").val();
     var isemail=isEmail(email);
     if(email.length<=1){
-      console.log("邮箱不能为空！");
+      _this.Tips({value:"邮箱不能为空！"});
       _this.parent().addClass("error");
-      _this.attr("placeholder","邮箱不能为空！");
       Email=false;
       return false;
     }else if(!isemail){
-      console.log("邮箱格式有误！");
       _this.parent().addClass("error");
-      _this.val("");
-      _this.attr("placeholder","邮箱格式有误！");
+      _this.Tips({value:"邮箱格式有误！"});
       Email=false;
       return false;
     }else if(email==emails){
@@ -83,10 +80,11 @@ function init(){
         if(typeof data.id=="object"){
           Email=true;
           _this.parent().removeClass("error");
+          _this.parent().addClass("right");
         }else{
           Email=false;
           _this.parent().addClass("error");
-          console.log("邮箱已经被注册！")
+          _this.Tips({value:"邮箱已经被注册！"});
         }
       },
     });
@@ -112,13 +110,13 @@ function init(){
         },
         success:function(data){
           if(typeof data.id=="number"){
-            alert("注册成功！");
+            $(document.body).Tips({value:"注册成功！"});
             $("input").val("");
           }
         },
       });
     }else{
-      alert("填写有误，请检查！")
+      _this.Tips({value:"请正确填写注册表单！"});
     }
   })
 }

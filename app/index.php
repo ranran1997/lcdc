@@ -6,6 +6,7 @@
           'active' => 'bool default 0',
           'customerId' => 'int(10) not null',
           'userName' => 'char(10) not null',
+          'email' => 'text not null',
           'password' => 'text not null',
           'createdAt' => 'datetime',
           'updatedAt' => 'datetime',

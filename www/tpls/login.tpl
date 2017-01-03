@@ -6,17 +6,6 @@
         <col width="85%">
       </colgroup>
       <tr>
-        <th>邮箱：</th>
-        <td>
-          <div class="input">
-            <input type="" name="email" value="" id="email">
-            <div class="loader-inner ball-clip-rotate">
-              <div></div>
-            </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
         <th>用户名：</th>
         <td>
           <div class="input">
@@ -35,10 +24,10 @@
         <th></th>
         <td align="right">
           <div class="btn btn-blue btn-large" id="submit">
-            注册
             <div class="loader-inner ball-clip-rotate">
               <div></div>
             </div>
+            <span>登录</span>
           </div>
         </td>
       </tr>

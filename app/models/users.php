@@ -22,6 +22,7 @@ class user extends dbObject {
         'customerId' => Array ('int'),
         'userName' => Array ('/[a-zA-Z0-9 ]+/'),
         'password' => Array ('text'),
+        'email' => Array(text),
         'createdAt' => Array ('datetime'),
         'updatedAt' => Array ('datetime'),
         'expires' => Array ('datetime'),

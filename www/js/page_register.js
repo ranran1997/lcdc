@@ -1,29 +1,124 @@
 function init(){
-  var register=false;
+  var User,Email,Pwd;
   /*验证用户名是否存在 */
+  var username="";
+  Pwd=true;
   $("#username").blur(function(){
-    var sendData={
-      type:"check",
-      username:$("input[name=username]").val() 
+    var _this=$(this);
+    var user=$("input[name=username]").val();
+    if(user.length<=1 || user==username) return false;
+    if(user.length<=6){
+      console.log("用户名不得少于6位")
+      _this.parent().addClass("error");
+      _this.val("");
+      _this.attr("placeholder","用户名不能少于6位！");
+      User=false;
+      return false;
     }
-    data(localUrl()+"register.php",sendData,"json",function(){
-      console.log(sendData)
-    },function(data){
-      console.log(data)
-    })
+    var sendData={
+      "type":"checkUserName",
+      "username":user
+    }
+    $.ajax({
+      type:'get',
+      url:"http://localhost/lcdc/app/app.php",
+      data:sendData,
+      dataType:"jsonp",
+      jsonp:"callback",
+      beforeSend:function(xhr){
+        console.log(xhr)
+        _this.parent().addClass("loading")
+      },
+      success:function(data){
+        _this.parent().removeClass("loading");
+        username=user;
+        if(typeof data.id=="object"){
+          User=true;
+          _this.parent().removeClass("error");
+        }else{
+          _this.parent().addClass("error");
+          console.log("用户名已经被注册！")
+        }
+      },
+    });
+  })
+  /*验证邮箱是否已经注册' */
+  var emails="";
+  $("#email").blur(function(){
+    var _this=$(this);
+    var email=$("input[name=email]").val();
+    var isemail=isEmail(email);
+    if(email.length<=1){
+      console.log("邮箱不能为空！");
+      _this.parent().addClass("error");
+      _this.attr("placeholder","邮箱不能为空！");
+      Email=false;
+      return false;
+    }else if(!isemail){
+      console.log("邮箱格式有误！");
+      _this.parent().addClass("error");
+      _this.val("");
+      _this.attr("placeholder","邮箱格式有误！");
+      Email=false;
+      return false;
+    }else if(email==emails){
+      return false;
+    }
+    var sendData={
+      "type":"checkEmail",
+      "email":email
+    }
+    $.ajax({
+      type:'get',
+      url:"http://localhost/lcdc/app/app.php",
+      data:sendData,
+      dataType:"jsonp",
+      jsonp:"callback",
+      beforeSend:function(xhr){
+        _this.parent().addClass("loading")
+      },
+      success:function(data){
+        _this.parent().removeClass("loading");
+        emails=email;
+        if(typeof data.id=="object"){
+          Email=true;
+          _this.parent().removeClass("error");
+        }else{
+          Email=false;
+          _this.parent().addClass("error");
+          console.log("邮箱已经被注册！")
+        }
+      },
+    });
   })
   /*注册*/
   $("#submit").click(function(){
-    var sendData={
-      type:"reg",
-      username:$("input[name=username]").val(),
-      password:$("input[name=password]").val(),
+    if(User && Email && Pwd){
+      var sendData={
+        type:"reg",
+        username:$("input[name=username]").val(),
+        password:$("input[name=password]").val(),
+        email:$("input[name=email]").val()
+      }
+      console.log(sendData)
+      $.ajax({
+        type:'get',
+        url:"http://localhost/lcdc/app/app.php",
+        data:sendData,
+        dataType:"jsonp",
+        jsonp:"callback",
+        beforeSend:function(){
+          
+        },
+        success:function(data){
+          if(typeof data.id=="number"){
+            alert("注册成功！");
+            $("input").val("");
+          }
+        },
+      });
+    }else{
+      alert("填写有误，请检查！")
     }
-    console.log(sendData)
-    data(localUrl()+"register.php",sendData,"json",function(){
-      console.log("start")
-    },function(data){
-      console.log(data)
-    })
   })
 }

@@ -1,9 +1,12 @@
 <div class="row h w content">
-  <div class="col v-m t-c">
+  <div class="col v-m t-c w-50">
+    <img class="w" src="img/reg.png"/>
+  </div>
+  <div class="col v-m t-c w-50">
     <table class="form w-60 auto">
       <colgroup>
-        <col width="15%">
-        <col width="85%">
+        <col width="20%">
+        <col width="80%">
       </colgroup>
       <tr></tr>
         <th>邮箱：</th>
@@ -40,7 +43,7 @@
       </tr>
       <tr>
         <th></th>
-        <td align="right">
+        <td align="left">
           <div class="btn btn-blue btn-large" id="submit">
             注册
             <div class="loader-inner ball-clip-rotate">

@@ -12,7 +12,7 @@ input:focus,textarea:focus{outline:none;}
 .v-m{vertical-align: middle;}.v-t{vertical-align: top;}.v-b{vertical-align: bottom;}
 .t-l{text-align:left;}.t-c{text-align:center;}.t-r{text-align:right;}
 .w{width:100%;}.h{height:100%;}
-.w-60{width:60%;}
+.w-40{width:40%;}.w-50{width:50%;}.w-60{width:60%;}
 .ib{display:inline-block;}
 .c-fff{color:#fff;}
 /*header*/
@@ -25,7 +25,7 @@ input:focus,textarea:focus{outline:none;}
 .view{padding-top:4.4rem;}
 .view .content{min-height:90vh;}
 /*footer*/
-.footer{padding:7rem 0;font-size:1.4rem;color:#575757;}
+.footer{padding:7rem 0;font-size:1.4rem;color:#999;background:#eee;}
 /*input*/
 .input{display: inline-block;position:relative;width:100%;}
 .input input{font-size:1.4rem;padding:1rem;border:1px solid #ededed;border-radius:0.3rem;width:100%;transition:0.3s;}

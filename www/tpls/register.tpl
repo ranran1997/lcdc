@@ -5,7 +5,7 @@
     <p class="fs-16 c-9 mt-5 t-c">你还看我，叫你快点填右边的表单！</p>
   </div>
   <div class="col v-m t-c w-40">
-    <table class="form w auto"></table>
+    <table class="form w auto">
       <tr></tr>
         <td>
           <div class="input icon">

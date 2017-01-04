@@ -1,30 +1,55 @@
-var data = {
-  "title": "资源库",
-  "menu":[{
-    text:"首页",
-    url:"/",
-    icon:""
-  },{
-    text:"项目",
-    url:"/projects",
-    icon:""
-  }]
-};
-nodetpl.get('tpls/header.tpl', data, function(d){
-  document.querySelector("#header").innerHTML=d;
-});
+header();
+function header(){
+  $.getScript('libs/jquery.cookie.js',function(){
+    var data = {
+      "title": "资源库",
+      "menu":[{
+        text:"首页",
+        url:"/",
+        icon:""
+      },{
+        text:"项目",
+        url:"/projects",
+        icon:""
+      }],
+      "user":$.cookie("logined"),
+      "submenu":[{
+        text:"个人中心",
+        url:"#/home",
+        icon:"icon-denglu"
+      },{
+        text:"退出登录",
+        url:"javascript:;",
+        icon:"icon-tuichu"
+      }]
+    };
+    nodetpl.get('tpls/header.tpl', data, function(d){
+      document.querySelector("#header").innerHTML=d;
+    });
+  });
+}
 nodetpl.get('tpls/footer.tpl', null, function(d){
   document.querySelector("#footer").innerHTML=d;
 });
 var home = function () {
   document.title="首页";
-  document.querySelector("#view").innerHTML="";
+  nodetpl.get('tpls/index.tpl', null, function(d){
+    document.querySelector("#view").innerHTML=d;
+    //init();
+  });
 };
 var project = function () {
   document.title="项目";
-  document.querySelector("#view").innerHTML="";
+  nodetpl.get('tpls/projects.tpl', null, function(d){
+    document.querySelector("#view").innerHTML=d;
+    //init();
+  });
 };
 var register=function(){
+  if(typeof $.cookie("logined")!="undefined"){
+    window.location.href="#/";
+    return false;
+  }
   document.title="注册";
   $.getScript('js/plugins.js',function(){
     $.getScript('libs/tipso.min.js');
@@ -59,9 +84,13 @@ var activation=function(){
   });
 }
 var login=function(){
+  if(typeof $.cookie("logined")!="undefined"){
+    window.location.href="#/";
+    return false;
+  }
+  window.location.href="#/";
   document.title="登录";
   $.getScript('js/plugins.js',function(){
-    $.getScript('libs/tipso.min.js');
     $.getScript('libs/jquery.cookie.js');
     $.getScript('js/page_login.js',function(){
       nodetpl.get('tpls/login.tpl', null, function(d){

@@ -112,6 +112,7 @@ function init(){
           if(typeof data.id=="number"){
             $(document.body).Tips({value:"注册成功！"});
             $("input").val("");
+            window.location.href="#/register_ok";
           }
         },
       });

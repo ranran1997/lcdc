@@ -36,6 +36,12 @@ var register=function(){
     })
   })
 }
+var register_ok=function(){
+  nodetpl.get('tpls/register_ok.tpl', null, function(d){
+    document.querySelector("#view").innerHTML=d;
+    //init();
+  });
+}
 var login=function(){
   document.title="登录";
   $.getScript('js/plugins.js',function(){
@@ -53,7 +59,8 @@ var routes = {
   '/': home,
   '/projects':project,
   '/register':register,
-  '/login':login
+  '/login':login,
+  '/register_ok':register_ok
 };
 
 var router = Router(routes);

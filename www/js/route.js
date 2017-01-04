@@ -46,14 +46,15 @@ var project = function () {
   });
 };
 var register=function(){
-  if(typeof $.cookie("logined")!="undefined"){
-    window.location.href="#/";
-    return false;
-  }
+  $.getScript('libs/jquery.cookie.js',function(){
+    if(typeof $.cookie("logined")!="undefined"){
+      window.location.href="#/";
+      return false;
+    }
+  });
   document.title="注册";
   $.getScript('js/plugins.js',function(){
     $.getScript('libs/tipso.min.js');
-    $.getScript('libs/jquery.cookie.js');
     $.getScript('js/page_register.js',function(){
       nodetpl.get('tpls/register.tpl', null, function(d){
         document.querySelector("#view").innerHTML=d;
@@ -84,11 +85,13 @@ var activation=function(){
   });
 }
 var login=function(){
-  if(typeof $.cookie("logined")!="undefined"){
-    window.location.href="#/";
-    return false;
-  }
-  window.location.href="#/";
+  $.getScript('libs/jquery.cookie.js',function(){
+    console.log(typeof $.cookie("logined"))
+    if(typeof $.cookie("logined")!="undefined"){
+      window.location.href="#/";
+      return false;
+    }
+  });
   document.title="登录";
   $.getScript('js/plugins.js',function(){
     $.getScript('libs/jquery.cookie.js');

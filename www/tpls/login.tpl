@@ -2,7 +2,7 @@
   <div class="col v-m t-c w-60">
     <img src="img/tu4.png"/>
     <p class="fs-16 c-9 mt-30 t-c">什么？你穷，我只是让你登陆一下，你瞎扯什么蛋！</p>
-    <p class="fs-16 c-9 mt-30 t-c">放心，登录本站不会花你一分钱呢！</p>
+    <p class="fs-16 c-9 mt-5 t-c">放心，登录本站不会花你一分钱呢！</p>
   </div>
   <div class="col v-m t-c w-40">
     <table class="form w auto">

@@ -2,10 +2,10 @@
   <div class="col v-m t-c w-60">
     <img src="img/tu3.png"/>
     <p class="fs-16 c-9 mt-30 t-c">word哥，你会不会填啊，你倒是快点啊，没看到这么大的太阳，换你来站会试试看！</p>
-    <p class="fs-16 c-9 mt-30 t-c">你还看我，叫你快点填右边的表单！</p>
+    <p class="fs-16 c-9 mt-5 t-c">你还看我，叫你快点填右边的表单！</p>
   </div>
   <div class="col v-m t-c w-40">
-    <table class="form w auto">
+    <table class="form w auto"></table>
       <tr></tr>
         <td>
           <div class="input icon">

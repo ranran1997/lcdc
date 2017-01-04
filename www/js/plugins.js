@@ -5,6 +5,11 @@ function isEmail(str){
   var reg = /^([a-zA-Z0-9\._-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
   return reg.test(str);
 }
+function GetRandomNum(Min,Max){   
+  var Range = Max - Min;   
+  var Rand = Math.random();   
+  return(Min + Math.round(Rand * Range));   
+}  
 ;(function($){  
     $.fn.extend({   
 	//将可选择的变量传递给方法
@@ -23,7 +28,7 @@ function isEmail(str){
                 if($(".tips").length>0){
                   $(".tips").removeClass("show").remove();
                 }
-                var str='<div class="tips '+o.type+'"><div class="mid-layout"><span class="iconfont icon-'+o.type+'"></span><span>'+o.value+'</span></div></div>';
+                var str='<div class="tips '+o.type+'"><div class="mid-layout"><span class="iconfont v-m icon-'+o.type+'"></span><span class="v-m">'+o.value+'</span></div></div>';
                 str=$(str).appendTo($(document.body));
                 setTimeout(function(){
                   str.addClass("show")

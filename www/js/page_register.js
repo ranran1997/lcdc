@@ -8,7 +8,7 @@ function init(){
     var user=$("input[name=username]").val();
     if(user.length<=5){
       _this.parent().addClass("error");
-      _this.Tips({value:"用户名不能少于6位！"});
+      _this.Tips({value:"写的那么清楚，6位以上，你当我说着好玩吗？"});
       User=false;
       return false;
     }else if(user==username){
@@ -37,7 +37,7 @@ function init(){
           _this.parent().addClass("right");
         }else{
           _this.parent().addClass("error");
-          _this.Tips({value:"用户名已经被注册！"});
+          _this.Tips({value:"相信你这么有才一定能想到一个比这更好的用户名的，加油！"});
         }
       },
     });
@@ -49,13 +49,13 @@ function init(){
     var email=$("input[name=email]").val();
     var isemail=isEmail(email);
     if(email.length<=1){
-      _this.Tips({value:"邮箱不能为空！"});
+      _this.Tips({value:"你逗我呢，邮箱都不给你就想注册！"});
       _this.parent().addClass("error");
       Email=false;
       return false;
     }else if(!isemail){
       _this.parent().addClass("error");
-      _this.Tips({value:"邮箱格式有误！"});
+      _this.Tips({value:"邮箱格式都能弄错，门卡和要死你能区分开不！"});
       Email=false;
       return false;
     }else if(email==emails){
@@ -91,12 +91,21 @@ function init(){
   })
   /*注册*/
   $("#submit").click(function(){
+    register($(this));
+  })
+  $(window).keydown(function(e){
+    if(e.keyCode==13){
+      register();
+    }
+  })
+  function register(_this){
     if(User && Email && Pwd){
       var sendData={
         type:"reg",
         username:$("input[name=username]").val(),
         password:$("input[name=password]").val(),
-        email:$("input[name=email]").val()
+        email:$("input[name=email]").val(),
+        random:GetRandomNum(10000000,99999999)
       }
       console.log(sendData)
       $.ajax({
@@ -106,12 +115,15 @@ function init(){
         dataType:"jsonp",
         jsonp:"callback",
         beforeSend:function(){
-          
+          $("#submit").addClass("loading")
         },
         success:function(data){
+          $("#submit").removeClass("loading");
+          console.log(data)
           if(typeof data.id=="number"){
-            $(document.body).Tips({value:"注册成功！"});
+            $(document.body).Tips({value:"注册成功！",type:"right"});
             $("input").val("");
+            $.cookie("reged",data.username);
             window.location.href="#/register_ok";
           }
         },
@@ -119,5 +131,5 @@ function init(){
     }else{
       _this.Tips({value:"请正确填写注册表单！"});
     }
-  })
+  }
 }

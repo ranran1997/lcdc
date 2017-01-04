@@ -1,15 +1,16 @@
 <div class="row h w content">
-  <div class="col v-m t-c w-70">
-    <img class="w" src="img/reg.png"/>
+  <div class="col v-m t-c w-60">
+    <img src="img/tu4.png"/>
+    <p class="fs-16 c-9 mt-30 t-c">什么？你穷，我只是让你登陆一下，你瞎扯什么蛋！</p>
+    <p class="fs-16 c-9 mt-30 t-c">放心，登录本站不会花你一分钱呢！</p>
   </div>
-  <div class="col v-m t-c w-30">
+  <div class="col v-m t-c w-40">
     <table class="form w auto">
-      <tr>
+      <tr></tr>
         <td>
           <div class="input icon">
-            <input type="" name="username" value="" id="username">
+            <input type="text" name="username" value="" id="username" placeholder="请输入邮箱或者用户名！">
             <span class="iconfont icon-username"></span>
-            <label>邮箱/用户名</label>
             <div class="loader-inner ball-clip-rotate">
               <div></div>
             </div>
@@ -19,9 +20,8 @@
       <tr>
         <td>
           <div class="input icon">
-            <input type="" name="password" value="" id="password">
+            <input type="" name="password" value="" id="password" placeholder="密码">
             <span class="iconfont icon-mima"></span>
-            <label>密码</label>
           </div>
         </td>
       </tr>

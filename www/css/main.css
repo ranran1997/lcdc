@@ -13,6 +13,9 @@ input:focus,textarea:focus{outline:none;}
 .t-l{text-align:left;}.t-c{text-align:center;}.t-r{text-align:right;}
 .w{width:100%;}.h{height:100%;}
 .w-40{width:40%;}.w-50{width:50%;}.w-60{width:60%;}
+.c-green{color:#1A981A;}.c-yellow{color:#E0B42E;}.c-9{color:#999;}.c-pink{color:#E64C65;}
+.fs-16{font-size:1.6rem;}.fs-24{font-size:2.4rem;}.fs-60{font-size:6rem !important;}
+.mr-10{margin-right:1rem;}.mt-10{margin-top:1rem;}.mt-20{margin-top:2rem;}.mt-30{margin-top:3rem;}
 .ib{display:inline-block;}
 .c-fff{color:#fff;}
 /*header*/
@@ -29,23 +32,20 @@ input:focus,textarea:focus{outline:none;}
 /*input*/
 .input{display: inline-block;position:relative;width:100%;}
 .input.icon input{padding-left:3.5rem;}
-.input input{font-size:1.4rem;padding:1rem;border:1px solid #ededed;border-radius:0.3rem;width:100%;transition:0.3s;position:relative;z-index:10;background:none;}
+.input input{font-size:1.4rem;padding:1rem;border:1px solid #ededed;border-radius:0.3rem;width:100%;transition:0.3s;position:relative;z-index:10;background:none;font-family:"微软雅黑";color:#666;}
 .input input:focus{transform: translateY(-1px);box-shadow:2px 3px 5px #eee;}
 .input input:focus + .iconfont{color:#E64C65;}
-.input .iconfont{position:absolute;left:1rem;top:50%;transform: translateY(-50%);font-size:2.4rem;color:#1F253D;}
+.input .iconfont{position:absolute;left:1rem;top:50%;transform: translateY(-50%);font-size:2.6rem;color:#666;z-index:11;}
 .input .icon-right{position:absolute;right:1rem;top:50%;transform: translateY(-50%);font-size:2rem;display:none;}
 .input label{position:absolute;left:3.5rem;top:50%;transform: translateY(-50%);color:#999;pointer-events: none;z-index:1;display:inline-block;padding:1rem 0;transition:0.3s;}
 .input input:focus + .iconfont + label{top:0;transform: translateY(-100%);left:0;}
-.right .icon-right{display:block;color:#70AE3E;}
+.right .icon-right{display:inline-block;color:#70AE3E;width:2rem;right:0;left:auto;}
 .input .loader-inner{position:absolute;right:1rem;top:50%;transform:translateY(-50%);display:none;}
 .input.loading .loader-inner{display:inline-block;}
-.input.error input{border-color: #f8cc7e;background:#fffce7}
-.input.error input::-webkit-input-placeholder{color:#f8cc7e;font-family: "微软雅黑";}
-.input.error input::-ms-input-placeholder{color:#f8cc7e;font-family: "微软雅黑";}
-.input.error input::-moz-placeholder{color:#f8cc7e;font-family: "微软雅黑";}
+.input.error input{border-color: #f8cc7e;}
 /*form*/
-.form th{font-size:1.4rem;font-weight:normal;text-align:right;padding-right:1rem;}
-.form td{padding:1.5rem 0;}
+.form th{font-size:1.4rem;font-weight:normal;text-align:right;padding-right:1rem;color:#666;}
+.form td{padding:1rem 0;}
 /*btn*/
 .btn{display:inline-block;position:relative;padding:0.7rem 1.5rem;color:#fff;border-radius:0.3rem;cursor:pointer;}
 .btn-large{padding:1rem 3rem;}
@@ -53,8 +53,8 @@ input:focus,textarea:focus{outline:none;}
 .btn:active{opacity:1;filter:alpha(opacity=100)}
 .btn-blue{background:#3b8cff;}
 .btn-pink{background:#E64C65;}
-.btn .loader-inner{position:absolute;top:50%;margin-top:-7px;left:10px;display:none;}
-.btn .loader-inner>div{border-color:#fff;border-bottom-color:transparent;width:14px;height:14px;}
+.btn .loader-inner{position:absolute;top:50%;margin-top:-7px;right:-30px;display:none;}
+.btn .loader-inner>div{border-color:#E64C65;border-bottom-color:transparent;width:14px;height:14px;}
 .btn.loading .loader-inner{display:inline-block;}
 /*修改loader*/
 .loader-inner{display:inline-block;}
@@ -65,3 +65,6 @@ input:focus,textarea:focus{outline:none;}
 .tips .iconfont{font-size:2.2rem;margin-right:0.3rem;}
 .tips span{vertical-align: middle;}
 .tips.warning{background:#FFFCE7;border-bottom:1px solid #F8CC7E;color:#E5950A;}
+.tips.right{border:1px solid #21A900;background:#E8FCE5;color:#21A900;}
+/*注册成功*/
+.success p{max-width:50em;margin-left:auto;margin-right:auto;}

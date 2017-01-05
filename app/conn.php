@@ -1,12 +1,14 @@
 <?
   error_reporting(0);
+  header("Access-Control-Allow-Origin: *");
   require_once ("lib/MysqliDb.php");
   require_once ("lib/dbObject.php");
   $db = new Mysqlidb(Array(
     "host"=>"localhost",
     "username"=>"root",
     "password"=>"root",
-    "db"=>"lcdc"
+    "db"=>"lcdc",
+    "charset"=>"utf8"
   ));
   $prefix = 'lc_';
   $db->setPrefix($prefix);

@@ -13,10 +13,14 @@
           'expires' => 'datetime',
           'loginCount' => 'int(10) default 0'
       ),
-      'products' => Array (
-          'customerId' => 'int(10) not null',
-          'userId' => 'int(10) not null',
-          'productName' => 'char(50)'
+      'articles' => Array (
+          'title' => 'char(30) not null',
+          'url' => 'char(50)',
+          'author'=>'char(10)',
+          'status'=>'int(2)',
+          'createdAt' => 'datetime',
+          'updatedAt' => 'datetime',
+          'secret'=>'int(2)'
       )
   );
   function createTable ($name, $data) {

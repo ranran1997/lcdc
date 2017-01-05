@@ -1,6 +1,7 @@
 <?
   require_once('conn.php');
   $user=dbObject::table("users");
+  $article=dbObject::table("articles");
   if(!isset($_GET["type"])) page::dely();
   $type=$_GET["type"];
   $jsonp=$_GET["callback"];
@@ -99,6 +100,26 @@
         );
       }
       echo $jsonp.'('.json_encode($result).')';
+    break;
+    case 'publish_article':
+      $title=$_GET['title'];
+      $content=$_GET['content'];
+      $author=$_GET['author'];
+      $file='md/'.iconv('utf-8','gbk',$title).'-'.iconv('utf-8','gbk',$author).'.md';
+      $fopen=fopen($file,'wb');
+      fputs($fopen,$content);
+      fclose($fopen);
+      $article->title=$title;
+      $article->url=$title.'-'.$author.'.md';
+      $article->author=$author;
+      $id=$article->save();
+      if($id){
+        $result=array(
+          'id'=>$id,
+          'title'=>$title,
+        );
+        echo $jsonp.'('.json_encode($result).')';
+      }
     break;
   }
 ?>

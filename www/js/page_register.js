@@ -20,7 +20,7 @@ function init(){
     }
     $.ajax({
       type:'get',
-      url:"http://localhost/lcdc/app/app.php",
+      url:"http://192.168.4.151/lcdc/app/app.php",
       data:sendData,
       dataType:"jsonp",
       jsonp:"callback",
@@ -67,10 +67,11 @@ function init(){
     }
     $.ajax({
       type:'get',
-      url:"http://localhost/lcdc/app/app.php",
+      url:"http://192.168.4.151/lcdc/app/app.php",
       data:sendData,
       dataType:"jsonp",
       jsonp:"callback",
+      timeout:10000,
       beforeSend:function(xhr){
         _this.parent().addClass("loading")
       },
@@ -87,6 +88,20 @@ function init(){
           _this.Tips({value:"邮箱已经被注册！"});
         }
       },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        if (XMLHttpRequest.readyState == 4) {
+            // HTTP error (can be checked by XMLHttpRequest.status and XMLHttpRequest.statusText)
+            console.log("http error")
+        }
+        else if (XMLHttpRequest.readyState == 0) {
+            // Network error (i.e. connection refused, access denied due to CORS, etc.)
+            console.log("network error")
+        }
+        else {
+            // something weird is happening
+            console.log("other error")
+        }
+      }
     });
   })
   /*注册*/
@@ -110,7 +125,7 @@ function init(){
       console.log(sendData)
       $.ajax({
         type:'get',
-        url:"http://localhost/lcdc/app/app.php",
+        url:"http://192.168.4.151/lcdc/app/app.php",
         data:sendData,
         dataType:"jsonp",
         jsonp:"callback",

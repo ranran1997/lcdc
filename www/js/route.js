@@ -11,6 +11,10 @@ function header(){
         text:"项目",
         url:"/projects",
         icon:""
+      },{
+        text:"文章",
+        url:"/articles",
+        icon:""
       }],
       "user":$.cookie("logined"),
       "submenu":[{
@@ -110,6 +114,37 @@ var activation_ok=function(){
     //init();
   });
 }
+var articles=function(){
+  nodetpl.get('tpls/articles.tpl', null, function(d){
+    document.querySelector("#view").innerHTML=d;
+    document.title="文章";
+    //init();
+  });
+}
+var article_publish=function(){
+  $.getScript('libs/editormd.min.js',function(){
+    $.getScript('js/page_article_publish.js',function(){
+      nodetpl.get('tpls/article_publish.tpl', null, function(d){
+        document.querySelector("#view").innerHTML=d;
+        document.title="发布文章";
+        var editor = editormd("editormd", {
+            path : "./libs/",
+            emoji:true,
+            codeFold:true,
+            searchReplace:true,
+            flowChat:true,
+            sequeceDiagram:true,
+            taskList:true,
+            tocm:true,
+            tex:true,
+            markdown:"",
+            height:"80%"
+        });
+        init(editor);
+      });
+    })
+  });
+}
 var routes = {
   '/': home,
   '/projects':project,
@@ -117,7 +152,9 @@ var routes = {
   '/login':login,
   '/register_ok':register_ok,
   '/activation':activation,
-  '/activation_ok':activation_ok
+  '/activation_ok':activation_ok,
+  "/articles":articles,
+  "/articles/publish":article_publish
 };
 
 var router = Router(routes);

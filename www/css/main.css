@@ -5,7 +5,7 @@ dl,dt,dd,ul,li{padding:0;margin:0;list-style: none;}
 a{text-decoration:none;}
 input:focus,textarea:focus{outline:none;}
 *{box-sizing: border-box;}
-.mid-layout{width:1200px;margin:0 auto;position:relative;}
+.mid-layout{width:1300px;margin:0 auto;position:relative;}
 .auto{margin-left:auto;margin-right:auto;}
 .row{display:inline-table;}
 .col{display:table-cell;}
@@ -15,7 +15,8 @@ input:focus,textarea:focus{outline:none;}
 .w-40{width:40%;}.w-50{width:50%;}.w-60{width:60%;}
 .c-green{color:#1A981A;}.c-yellow{color:#E0B42E;}.c-9{color:#999;}.c-pink{color:#E64C65;}
 .fs-16{font-size:1.6rem;}.fs-24{font-size:2.4rem;}.fs-60{font-size:6rem !important;}
-.mr-5{margin-right:0.5rem;}.mr-10{margin-right:1rem;}.mt-5{margin-top:0.5rem;}.mt-10{margin-top:1rem;}.mt-20{margin-top:2rem;}.mt-30{margin-top:3rem;}
+.mr-5{margin-right:0.5rem;}.mr-10{margin-right:1rem;}.mt-5{margin-top:0.5rem;}.mt-10{margin-top:1rem;}.mt-20{margin-top:2rem;}.mt-30{margin-top:3rem;}.mb-10{margin-bottom:1rem;}
+.pt-10{padding-top:1rem;}.pb-10{padding-bottom:1em;}
 .ib{display:inline-block;}
 .c-fff{color:#fff;}
 /*header*/
@@ -26,8 +27,8 @@ input:focus,textarea:focus{outline:none;}
 .header .user{position:absolute;right:0;top:0;}
 .header .user-info{position:absolute;right:0;top:-1.5rem;}
 .header .user-info > a{display:inline-block;height:4.4rem;line-height:4.4rem;width:210%;background:#1F253D;z-index:11;position:relative;}
-.header .sub-menu{position:absolute;top:0;left:0;width:200%;padding:1rem 0;background:#fff;box-shadow:1px 2px 3px #ccc;transition:0.3s;opacity:0;z-index:10;}
-.header .user-info:hover .sub-menu{opacity:1;top:4.4rem;}
+.header .sub-menu{position:absolute;top:0;transform:translateY(-50%);left:0;width:200%;padding:1rem 0;background:#fff;box-shadow:1px 2px 3px #ccc;transition:0.3s;opacity:0;z-index:10;}
+.header .user-info:hover .sub-menu{opacity:1;top:4.4rem;transform:translateY(0);}
 .header .sub-menu:before{content:"";display:inline-block;width:0;height:0;border-left:1rem solid transparent;border-right:1rem solid transparent;border-top:1rem solid transparent;border-bottom:1rem solid #F1F1F1;position:absolute;top:-1.7rem;left:1rem;z-index:10;}
 .header .sub-menu a{display:block;color:#666;padding:0 1rem;height:3rem;line-height:3rem;}
 .header .sub-menu a .iconfont{font-size:2.4rem;}

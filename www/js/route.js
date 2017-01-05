@@ -145,6 +145,11 @@ var article_publish=function(){
     })
   });
 }
+var article=function(id){
+  $.getScript('js/page_article.js',function(){
+    init(id);
+  })
+}
 var routes = {
   '/': home,
   '/projects':project,
@@ -154,7 +159,8 @@ var routes = {
   '/activation':activation,
   '/activation_ok':activation_ok,
   "/articles":articles,
-  "/articles/publish":article_publish
+  "/articles/publish":article_publish,
+  "/articles/:Id":article
 };
 
 var router = Router(routes);

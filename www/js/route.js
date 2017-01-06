@@ -57,14 +57,12 @@ var register=function(){
     }
   });
   document.title="注册";
-  $.getScript('js/plugins.js',function(){
-    $.getScript('libs/tipso.min.js');
-    $.getScript('js/page_register.js',function(){
-      nodetpl.get('tpls/register.tpl', null, function(d){
-        document.querySelector("#view").innerHTML=d;
-        init();
-      });
-    })
+  $.getScript('libs/tipso.min.js');
+  $.getScript('js/page_register.js',function(){
+    nodetpl.get('tpls/register.tpl', null, function(d){
+      document.querySelector("#view").innerHTML=d;
+      init();
+    });
   })
 }
 var register_ok=function(){
@@ -97,14 +95,12 @@ var login=function(){
     }
   });
   document.title="登录";
-  $.getScript('js/plugins.js',function(){
-    $.getScript('libs/jquery.cookie.js');
-    $.getScript('js/page_login.js',function(){
-      nodetpl.get('tpls/login.tpl', null, function(d){
-        document.querySelector("#view").innerHTML=d;
-        init();
-      });
-    })
+  $.getScript('libs/jquery.cookie.js');
+  $.getScript('js/page_login.js',function(){
+    nodetpl.get('tpls/login.tpl', null, function(d){
+      document.querySelector("#view").innerHTML=d;
+      init();
+    });
   })
 }
 var activation_ok=function(){
@@ -146,10 +142,8 @@ var article_publish=function(){
   });
 }
 var article=function(id){
-  $.getScript('js/plugins.js',function(){
-    $.getScript('js/page_article.js',function(){
-      init(id);
-    })
+  $.getScript('js/page_article.js',function(){
+    page(id);
   })
 }
 var routes = {

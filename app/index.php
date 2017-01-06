@@ -16,6 +16,7 @@
       'articles' => Array (
           'title' => 'char(30) not null',
           'url' => 'char(50)',
+          'content'=>'text(3000)',
           'author'=>'char(10)',
           'status'=>'int(2)',
           'createdAt' => 'datetime',

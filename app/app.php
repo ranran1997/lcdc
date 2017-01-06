@@ -102,6 +102,8 @@
       echo $jsonp.'('.json_encode($result).')';
     break;
     case 'publish_article':
+      require_once('lib/markdown.class.php');
+      $obj=new Markdown();
       $title=$_GET['title'];
       $content=$_GET['content'];
       $author=$_GET['author'];
@@ -112,6 +114,7 @@
       $article->title=$title;
       $article->url=$title.'-'.$author.'.md';
       $article->author=$author;
+      $article->content=$obj->parseMarkdown($content);
       $id=$article->save();
       if($id){
         $result=array(
@@ -127,7 +130,8 @@
       $stats=$db->getOne("articles");
       $result=array(
         'title'=>$stats[title],
-        'content'=>$stats[url],
+        'url'=>$stats[url],
+        'content'=>$stats[content],
         'author'=>$stats[author],
         'time'=>$stats[createdAt],
         'url'=>curPageURL()

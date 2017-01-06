@@ -1,4 +1,4 @@
-function init(id){
+function page(id){
   var sendData={
     type:"get_article",
     id:id
@@ -11,27 +11,29 @@ function init(id){
     dataType:"jsonp",
     jsonp:"callback",
     beforeSend:function(_this){
-      console.log(sendData)
+      
     },
     success:function(data){
-      nodetpl.get('tpls/article_detail.tpl', data, function(d){
-        document.querySelector("#view").innerHTML=d;
-        document.title="文章";
+      $.getScript('libs/editormd.min.js',function(){
+        nodetpl.get('tpls/article_detail.tpl', data, function(d){
+          document.querySelector("#view").innerHTML=d;
+          document.title="文章";
+          var editor = editormd("editormd", {
+            path : "./libs/",
+            emoji:false,
+            codeFold:false,
+            searchReplace:false,
+            flowChat:false,
+            sequeceDiagram:false,
+            taskList:false,
+            tocm:false,
+            tex:false,
+            markdown:"",
+            height:"80%"
+          });
+          init(editor);
+        });
       });
-    },
-    error: function(XMLHttpRequest, textStatus, errorThrown) {
-        if (XMLHttpRequest.readyState == 4) {
-            // HTTP error (can be checked by XMLHttpRequest.status and XMLHttpRequest.statusText)
-            console.log("http error")
-        }
-        else if (XMLHttpRequest.readyState == 0) {
-            // Network error (i.e. connection refused, access denied due to CORS, etc.)
-            console.log("network error")
-        }
-        else {
-            // something weird is happening
-            console.log("other error")
-        }
-      }
+    }
   });
 }

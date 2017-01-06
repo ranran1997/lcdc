@@ -1,5 +1,8 @@
 function localUrl(){
-  return "http://localhost/LCDC/app/";
+  return "http://192.168.4.151/LCDC/app/app.php";
+}
+function service(){
+  return "http://192.168.4.151/LCDC/app/"
 }
 function isEmail(str){
   var reg = /^([a-zA-Z0-9\._-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;

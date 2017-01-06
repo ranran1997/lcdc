@@ -34,7 +34,7 @@ input:focus,textarea:focus{outline:none;}
 .header .sub-menu a .iconfont{font-size:2.4rem;}
 .header .sub-menu a:hover{color:#E64C65 !important;}
 /*view*/
-.view{padding-top:4.4rem;}
+.view{padding-top:4.4rem;min-height:100vh;}
 .view .content{min-height:95.25vh;}
 /*footer*/
 .footer{padding:7rem 0;font-size:1.4rem;color:#999;background:#eee;}

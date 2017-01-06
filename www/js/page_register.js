@@ -20,7 +20,7 @@ function init(){
     }
     $.ajax({
       type:'get',
-      url:"http://192.168.4.151/lcdc/app/app.php",
+      url:localUrl(),
       data:sendData,
       dataType:"jsonp",
       jsonp:"callback",
@@ -67,7 +67,7 @@ function init(){
     }
     $.ajax({
       type:'get',
-      url:"http://192.168.4.151/lcdc/app/app.php",
+      url:localUrl(),
       data:sendData,
       dataType:"jsonp",
       jsonp:"callback",
@@ -125,7 +125,7 @@ function init(){
       console.log(sendData)
       $.ajax({
         type:'get',
-        url:"http://192.168.4.151/lcdc/app/app.php",
+        url:localUrl(),
         data:sendData,
         dataType:"jsonp",
         jsonp:"callback",

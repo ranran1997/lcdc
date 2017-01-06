@@ -6,20 +6,32 @@ function init(id){
   //获取文章
   $.ajax({
     type:'get',
-    url:"http://192.168.4.151/lcdc/app/app.php",
+    url:localUrl(),
     data:sendData,
     dataType:"jsonp",
     jsonp:"callback",
     beforeSend:function(_this){
-      $("#submit").addClass("loading")
+      console.log(sendData)
     },
     success:function(data){
-      console.log(data)
+      nodetpl.get('tpls/article_detail.tpl', data, function(d){
+        document.querySelector("#view").innerHTML=d;
+        document.title="文章";
+      });
     },
-  });
-  nodetpl.get('tpls/article_detail.tpl', null, function(d){
-    document.querySelector("#view").innerHTML=d;
-    document.title="文章";
-    //init();
+    error: function(XMLHttpRequest, textStatus, errorThrown) {
+        if (XMLHttpRequest.readyState == 4) {
+            // HTTP error (can be checked by XMLHttpRequest.status and XMLHttpRequest.statusText)
+            console.log("http error")
+        }
+        else if (XMLHttpRequest.readyState == 0) {
+            // Network error (i.e. connection refused, access denied due to CORS, etc.)
+            console.log("network error")
+        }
+        else {
+            // something weird is happening
+            console.log("other error")
+        }
+      }
   });
 }

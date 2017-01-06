@@ -146,8 +146,10 @@ var article_publish=function(){
   });
 }
 var article=function(id){
-  $.getScript('js/page_article.js',function(){
-    init(id);
+  $.getScript('js/plugins.js',function(){
+    $.getScript('js/page_article.js',function(){
+      init(id);
+    })
   })
 }
 var routes = {

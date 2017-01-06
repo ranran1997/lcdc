@@ -121,5 +121,18 @@
         echo $jsonp.'('.json_encode($result).')';
       }
     break;
+    case "get_article":
+      $id=intval($_GET['id']);
+      $db->where("id",$id);
+      $stats=$db->getOne("articles");
+      $result=array(
+        'title'=>$stats[title],
+        'content'=>$stats[url],
+        'author'=>$stats[author],
+        'time'=>$stats[createdAt],
+        'url'=>curPageURL()
+      );
+      echo $jsonp.'('.json_encode($result).')';
+    break;
   }
 ?>

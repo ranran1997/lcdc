@@ -14,25 +14,47 @@ function page(id){
       
     },
     success:function(data){
-      $.getScript('libs/editormd.min.js',function(){
-        nodetpl.get('tpls/article_detail.tpl', data, function(d){
-          document.querySelector("#view").innerHTML=d;
-          document.title="文章";
-          var editor = editormd("editormd", {
-            path : "./libs/",
-            emoji:false,
-            codeFold:false,
-            searchReplace:false,
-            flowChat:false,
-            sequeceDiagram:false,
-            taskList:false,
-            tocm:false,
-            tex:false,
-            markdown:"",
-            height:"80%"
-          });
-          init(editor);
-        });
+      console.log(data)
+      nodetpl.get('tpls/article_detail.tpl', data, function(d){
+        document.querySelector("#view").innerHTML=d;
+        document.title=data.title;
+        $.getScript('libs/epiceditor/js/epiceditor.min.js',function(){
+          var options={
+            container:"editormd",
+            basePath:"./libs/epiceditor",
+            parser: marked,
+            file: {
+              name: 'epiceditor',
+              defaultContent: '## nihao',
+              autoSave: 100
+            },
+            theme: {
+              base: '/themes/base/epiceditor.css',
+              preview: '/themes/preview/github.css',
+              editor: '/themes/editor/epic-light.css'
+            },
+            button: {
+              preview: true,
+              fullscreen: true,
+              bar: "hidden"
+            },
+            focusOnLoad: false,
+            shortcut: {
+              modifier: 18,
+              fullscreen: 70,
+              preview: 80
+            },
+            string: {
+              togglePreview: 'Toggle Preview Mode',
+              toggleEdit: 'Toggle Edit Mode',
+              toggleFullscreen: 'Enter Fullscreen'
+            },
+            autogrow: true
+          }
+          var editor=new EpicEditor(options);
+          editor.load();
+          editor.preview();
+        })
       });
     }
   });

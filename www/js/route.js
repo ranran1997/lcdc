@@ -22,6 +22,10 @@ function header(){
         url:"#/home",
         icon:"icon-denglu"
       },{
+        text:"写文章",
+        url:"#/articles/publish",
+        icon:""
+      },{
         text:"退出登录",
         url:"javascript:;",
         icon:"icon-tuichu"

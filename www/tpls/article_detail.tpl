@@ -3,7 +3,7 @@
     <h1 class="title"><?=@title?></h1>
     <p class="t-r"><span>作者：<?=@author?></span><span>发布时间：<?=@time?></span></p>
     <div id="editormd">
-        <textarea style="display:none;">### Hello Editor.md !</textarea>
+        <textarea style="display:none;"><?=@content?></textarea>
     </div>
   </div>
 </div>

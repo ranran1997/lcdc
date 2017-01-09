@@ -114,7 +114,7 @@
       $article->title=$title;
       $article->url=$title.'-'.$author.'.md';
       $article->author=$author;
-      $article->content=$obj->parseMarkdown($content);
+      $article->content=$obj->$content;
       $id=$article->save();
       if($id){
         $result=array(

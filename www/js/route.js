@@ -115,10 +115,9 @@ var activation_ok=function(){
   });
 }
 var articles=function(){
-  nodetpl.get('tpls/articles.tpl', null, function(d){
-    document.querySelector("#view").innerHTML=d;
-    document.title="文章";
-    //init();
+  console.log(0)
+  $.getScript('js/page_article_list.js',function(){
+    page(0);
   });
 }
 var article_publish=function(){
@@ -158,7 +157,7 @@ var routes = {
   '/register_ok':register_ok,
   '/activation':activation,
   '/activation_ok':activation_ok,
-  "/articles":articles,
+  '/articles':[articles],
   "/articles/publish":article_publish,
   "/articles/:Id":article
 };

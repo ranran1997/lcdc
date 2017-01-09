@@ -19,6 +19,7 @@ class articles extends dbObject {
     protected $dbFields = Array (
         'title' => Array ('text', 'required'),
         'url' => Array ('text'),
+        'type'=>Array('int'),
         'content'=>Array('text'),
         'author' => Array('text'),
         'status'=>Array('int'),

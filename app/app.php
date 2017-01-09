@@ -107,6 +107,7 @@
       $title=$_GET['title'];
       $content=$_GET['content'];
       $author=$_GET['author'];
+      $catory=$_GET['catory'];
       $file='md/'.iconv('utf-8','gbk',$title).'-'.iconv('utf-8','gbk',$author).'.md';
       $fopen=fopen($file,'wb');
       fputs($fopen,$content);
@@ -114,7 +115,8 @@
       $article->title=$title;
       $article->url=$title.'-'.$author.'.md';
       $article->author=$author;
-      $article->content=$obj->$content;
+      $article->type=$catory;
+      $article->content=$content;
       $id=$article->save();
       if($id){
         $result=array(
@@ -135,6 +137,22 @@
         'author'=>$stats[author],
         'time'=>$stats[createdAt],
         'url'=>curPageURL()
+      );
+      echo $jsonp.'('.json_encode($result).')';
+    break;
+    case "article_list":
+      $catory=$_GET['catory'];
+      if($catory>0){
+        $db->where("type",$catory);
+      }
+      $stats=$db->getOne("articles");
+      $result=array(
+        'id'=>$stats[id],
+        'title'=>$stats[title],
+        'type'=>$stats[type],
+        'content'=>substr($stats[type],0,200),
+        'author'=>$stats[author],
+        'time'=>$stats[createdAt]
       );
       echo $jsonp.'('.json_encode($result).')';
     break;

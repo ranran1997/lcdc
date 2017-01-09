@@ -1,6 +1,7 @@
 <div class="row h w content">
   <div class="col v-t t-c pt-10 pb-10">
-    <div class="input mb-10"><input type="text" name="title" id="title"/></div>
+    <div class="input mb-10"><input type="number" name="catory" id="catory" placeholder="文章分类"/></div>
+    <div class="input mb-10"><input type="text" name="title" id="title" placeholder="文章标题"/></div>
     <div id="editormd">
         <textarea style="display:none;">### Hello Editor.md !</textarea>
     </div>

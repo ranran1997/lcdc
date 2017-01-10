@@ -23,6 +23,20 @@
           'createdAt' => 'datetime',
           'updatedAt' => 'datetime',
           'secret'=>'int(2)'
+      ),
+      'projects' => Array (
+          'title' => 'char(30) not null',
+          'url' => 'char(50)',
+          'type'=>'int(2)',
+          'content'=>'text(300)',
+          'author'=>'char(10)',
+          'view'=>'int(5)',
+          'github'=>'char(40)',
+          'file'=>'char(50)',
+          'img'=>'char(50)',
+          'createdAt' => 'datetime',
+          'updatedAt' => 'datetime',
+          'secret'=>'int(2)'
       )
   );
   function createTable ($name, $data) {

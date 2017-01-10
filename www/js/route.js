@@ -26,6 +26,10 @@ function header(){
         url:"#/articles/publish",
         icon:""
       },{
+        text:"新增项目",
+        url:"#/projects/add",
+        icon:""
+      },{
         text:"退出登录",
         url:"javascript:;",
         icon:"icon-tuichu"
@@ -54,12 +58,6 @@ var project = function () {
   });
 };
 var register=function(){
-  $.getScript('libs/jquery.cookie.js',function(){
-    if(typeof $.cookie("logined")!="undefined"){
-      window.location.href="#/";
-      return false;
-    }
-  });
   document.title="注册";
   $.getScript('libs/tipso.min.js');
   $.getScript('js/page_register.js',function(){
@@ -91,13 +89,6 @@ var activation=function(){
   });
 }
 var login=function(){
-  $.getScript('libs/jquery.cookie.js',function(){
-    console.log(typeof $.cookie("logined"))
-    if(typeof $.cookie("logined")!="undefined"){
-      window.location.href="#/";
-      return false;
-    }
-  });
   document.title="登录";
   $.getScript('libs/jquery.cookie.js');
   $.getScript('js/page_login.js',function(){
@@ -149,9 +140,15 @@ var article=function(id){
     page(id);
   })
 }
+var addProject=function(){
+  $.getScript('js/page_addProject.js',function(){
+    page();
+  })
+}
 var routes = {
   '/': home,
   '/projects':project,
+  '/projects/add':addProject,
   '/register':register,
   '/login':login,
   '/register_ok':register_ok,

@@ -5,7 +5,7 @@
       <li class="ib"><a href="#<?=@menu[i].url?>"><?=@menu[i].text?></a></li>
     <?}?>
   </ul>
-  <?if(typeof @user=="undefined"){?>
+  <?if(@user.length==0){?>
   <div class="block user">
     <a class="ib" href="#/register">注册</a>
     <a class="ib" href="#/login">登录</a>

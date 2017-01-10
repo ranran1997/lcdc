@@ -142,10 +142,12 @@
     break;
     case "article_list":
       $catory=$_GET['catory'];
+      $page=1;
+      $db->pageLimit=10;
       if($catory>0){
         $db->where("type",$catory);
       }
-      $stats=$db->get("articles");
+      $stats=$db->arraybuilder()->paginate("articles",$page);
       echo $jsonp.'('.json_encode($stats).')';
     break;
   }

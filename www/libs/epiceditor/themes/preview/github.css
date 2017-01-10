@@ -5,7 +5,7 @@ body {
   padding:0;
   background:#fff;
 	font-family:"微软雅黑";
-	color:#888;
+	color:#484848;
 }
 
 .epiceditor-wrapper{
@@ -16,8 +16,9 @@ body {
 	padding-top:10px;
 	padding-bottom:10px;
 	font-family:"微软雅黑";
-	font-size:13px;
-	line-height:1.6;
+	font-size:14px;
+	line-height:1.8;
+	text-indent:2em;
 }
 
 .epiceditor-preview>*:first-child{
@@ -358,13 +359,15 @@ body {
 
 .epiceditor-preview .highlight pre,
 .epiceditor-preview pre{
-	background-color:#f8f8f8;
-	border:1px solid #ccc;
-	font-size:13px;
-	line-height:19px;
+	background-color:#f9f9f9;
+	border:1px solid #eee;
+	font-size:14px;
+	line-height:1.8;
 	overflow:auto;
 	padding:6px 10px;
 	border-radius:3px;
+	text-indent:0;
+	font-family:"微软雅黑"
 }
 
 .epiceditor-preview pre code,

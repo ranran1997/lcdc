@@ -1,4 +1,5 @@
 function init(editor){
+  $.getScript('libs/jquery.cookie.js');
   $("#publish").click(function(){
     var title=$('input[name=title]').val();
     var catory=$('input[name=catory]').val();
@@ -8,7 +9,7 @@ function init(editor){
       catory:catory,
       title:title,
       content:content,
-      author:'admin'
+      author:$.cookie("logined")
     }
     console.log(sendData)
     $.ajax({
@@ -22,6 +23,7 @@ function init(editor){
       },
       success:function(data){
         console.log(data)
+        window.location.href="#/articles/"+data.id
       },
     });
   })

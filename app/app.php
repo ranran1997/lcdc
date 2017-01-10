@@ -145,16 +145,8 @@
       if($catory>0){
         $db->where("type",$catory);
       }
-      $stats=$db->getOne("articles");
-      $result=array(
-        'id'=>$stats[id],
-        'title'=>$stats[title],
-        'type'=>$stats[type],
-        'content'=>substr($stats[type],0,200),
-        'author'=>$stats[author],
-        'time'=>$stats[createdAt]
-      );
-      echo $jsonp.'('.json_encode($result).')';
+      $stats=$db->get("articles");
+      echo $jsonp.'('.json_encode($stats).')';
     break;
   }
 ?>

@@ -14,7 +14,7 @@ function page(id){
     },
     success:function(data){
       console.log(data)
-      nodetpl.get('tpls/articles.tpl', null, function(d){
+      nodetpl.get('tpls/articles.tpl', data, function(d){
         document.querySelector("#view").innerHTML=d;
         document.title="文章";
       });

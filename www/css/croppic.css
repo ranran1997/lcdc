@@ -47,23 +47,23 @@
 				/* top: -31px; */
 				top: -1px;
 				right: -1px;
+				left:-1px;
 				font-family:sans-serif;
+				text-align:right;
 				background-color:rgba(0,0,0,0.35); 
 			}
 			
 			.cropControls i{
-				display:block;
-				float:left;
+				display:inline-block;
+				vertical-align:middle;
 				margin:0;
 				cursor:pointer;
-				background-image:url('../img/cropperIcons.png');	
 				width:30px;
 				height:30px;
 				text-align:center;
-				line-height:20px;
+				line-height:30px;
 				color:#FFF;
-				font-size:13px;
-				font-weight: bold;
+				font-size:18px;
 				font-style: normal;
 				
 			}

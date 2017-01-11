@@ -1330,10 +1330,11 @@ class UploadHandler
             if (is_array($upload['tmp_name'])) {
                 // param_name is an array identifier like "files[]",
                 // $upload is a multi-dimensional array:
+                date_default_timezone_set('prc');
                 foreach ($upload['tmp_name'] as $index => $value) {
                     $files[] = $this->handle_file_upload(
                         $upload['tmp_name'][$index],
-                        $file_name ? $file_name : $upload['name'][$index],
+                        $file_name ? $file_name : date('ymdhis',time()).rand(1000,9999).'_'.iconv('utf-8','gbk',$upload['name'][$index]),
                         $size ? $size : $upload['size'][$index],
                         $upload['type'][$index],
                         $upload['error'][$index],

@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="css/croppic.css">
 <div class="row h w content bg-white r-5 p-30">
   <div class="col v-t t-c pt-10 pb-10">
     <table class="form">
@@ -35,7 +36,7 @@
         </td>
         <th>封面：</th>
         <td rowspan="4">
-
+          <div class="crop" id="yourId"></div>
         </td>
       </tr>
       <tr>
@@ -65,7 +66,10 @@
       <tr>
         <th>上传附件：</th>
         <td colspan="3">
-          
+          <input id="fileupload" type="file" name="files[]" data-url="http://192.168.4.151/LCDC/app/app.php?type=upload" multiple>
+          <div id="progress">
+              <div class="bar" style="width: 0%;"></div>
+          </div>
         </td>
       </tr>
     </table>

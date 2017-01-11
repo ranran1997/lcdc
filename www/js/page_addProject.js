@@ -34,7 +34,7 @@ function page(){
           $(".uploaded").addClass("data")
           var type=data.files[0].name.split(".");
           type=type[type.length-1];
-          $('<a href="'+data.files[0].url+'" class="file-list"><span class="iconfont icon-'+type+'"></span><span class="ib v-m">'+data.files[0].name+'</span><span class="t-r c-999">'+bytesToSize(data.files[0].size)+'</span></a>').appendTo($("#uploaded"))
+          $('<a href="'+data.files[0].url+'" class="file-list"><span class="iconfont icon-'+type+'"></span><span class="ib v-m">'+data.files[0].name+'</span><span class="t-r c-999">'+bytesToSize(data.files[0].size)+'</span><span class="iconfont icon-wrong t-r"></span></a>').appendTo($("#uploaded"))
           data.submit().success(function(result,textstatus,jqXHR){
             $("#uploaded").children("a").eq(count).addClass("finish");
             files.push(result.files[0].url);

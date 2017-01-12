@@ -91,30 +91,70 @@ function page(){
         autoUpload:true
       })
       file.on('fileuploadadd',function(e,data){
+        $(".uploaded").addClass("data")
         $.each(data.files,function(index,file){
           var type=file.name.split(".");
           type=type[type.length-1];
-          $('<a href="'+file.url+'" class="file-list" id="'+file.size+'"><span class="iconfont icon-'+type+'"></span><span class="ib v-m">'+file.name+'</span><span class="t-r c-999">'+bytesToSize(file.size)+'</span><span class="iconfont icon-wrong t-r"></span></a>').appendTo($("#uploaded"))
+          $('<a href="javascript:;" class="file-list" id="'+file.size+'"><span class="iconfont icon-'+type+'"></span><span class="ib v-m">'+file.name+'</span><span class="t-r c-999">'+bytesToSize(file.size)+'</span><span class="iconfont icon-wrong t-r"></span><span class="loading"></span></a>').appendTo($("#uploaded"))
         })
       })
       file.on('fileuploadalways',function(e,data){
         $.each(data.files,function(index,file){
-          $("#"+file.size).addClass("finish")
+          console.log(file)
+          $("#"+file.size).addClass("finish").attr("url",file.name);
+          files.push(file.name);
         })
       })
       file.on('fileuploadprocessalways',function(e,data){
+        $.each(data.files,function(index,file){
+          //console.log(file.name)
+        })
         //console.log(data)
       })
       file.on('fileuploadprogressall',function(e,data){
         var progress = parseInt(data.loaded / data.total * 100, 10);
         $("#progress").css('width',progress+"%");
+        
       })
       file.on('fileuploaddone',function(e,data){
-        //console.log(data)
+        
       })
       file.on('fileuploadfail',function(e,data){
         //console.log(data)
       })
     });
+    /*删除文件 */
+    $(".uploaded").delegate(".icon-wrong","click",function(){
+      var _this=$(this);
+      var sendData={
+        type:"deletefile",
+        url:"files/"+$(this).parents("a").attr("url")
+      }
+      $.ajax({
+        type:'get',
+        url:localUrl(),
+        data:sendData,
+        dataType:"jsonp",
+        jsonp:"callback",
+        beforeSend:function(_this){
+          console.log(sendData)
+        },
+        success:function(data){
+          if(data.text=="right"){
+            _this.parents("a").remove();
+            removeByValue(files,_this.parents("a").attr("url"))
+          }
+          console.log(files)
+          if($("#uploaded").children().length==0){
+            $(".uploaded").removeClass("data");
+            $("#progress").attr("percent","0%").css("width",0);
+          }
+        },
+        error:function(status){
+          console.log(status)
+        }
+      })
+      return false;
+    })
   })
 }

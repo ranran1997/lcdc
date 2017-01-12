@@ -120,10 +120,11 @@ i{font-style:normal;}
 .select{display:inline-block;position:relative;}
 .select select{font-size:1.4rem;padding:1rem;width:100%;border:1px solid #EDEDED;border-radius:0.5rem;}
 /*上传附件列表*/
-.file-list{font-size:1.4rem;color:#666;display:table;width:100%;margin:0;padding:1rem;border-top:1px solid #F5F5F5;transition:0.3s;}
+.file-list{font-size:1.4rem;color:#666;display:table;width:100%;margin:0;padding:1rem;border-top:1px solid #F5F5F5;transition:0.3s;position:relative;}
 .file-list.finish{background:rgba(46,183,41,0.05);}
 .file-list:first-child{border-top:none;}
 .file-list span{display:table-cell;vertical-align:middle;}
+.file-list .loading{display:inline-block;width:0;height:100%;position:absolute;left:0;top:0;background:rgba(46,183,41,0.05)}
 .file-list .iconfont{font-size:2.4rem;margin-right:0.5rem;width:3rem;}
 .uploaded{display:block;padding:1rem;border:1px solid #EDEDED;margin-top:1rem;border-radius:0.5rem;position:relative;}
 .uploaded .icon-fujian{font-size:7rem;color:#f1f1f1;}

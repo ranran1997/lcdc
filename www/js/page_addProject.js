@@ -1,8 +1,48 @@
 function page(){
   var files=[];
   var url=localUrl()+"?type=upload";
+  var croppedImg=null;
+  var upimg=null;
   var set={
     url:url
+  }
+  function deleteyt(){
+    var sendData={
+      type:"deletefile",
+      url:upimg
+    }
+    $.ajax({
+      type:'get',
+        url:localUrl(),
+        data:sendData,
+        dataType:"jsonp",
+        jsonp:"callback",
+        beforeSend:function(_this){
+          
+        },
+        success:function(data){
+          console.log(data)
+        }
+    });
+  }
+  function deleteCrop(){
+    var sendData={
+      type:"deletefile",
+      url:croppedImg
+    }
+    $.ajax({
+      type:'get',
+        url:localUrl(),
+        data:sendData,
+        dataType:"jsonp",
+        jsonp:"callback",
+        beforeSend:function(_this){
+          
+        },
+        success:function(data){
+          console.log(data)
+        }
+    });
   }
   nodetpl.get('tpls/addProject.tpl', set, function(d){
     document.querySelector("#view").innerHTML=d;
@@ -11,7 +51,6 @@ function page(){
     $.getScript('libs/jquery.ui.widget.js');
     $.getScript('libs/jquery.iframe-transport.js');
     $.getScript('libs/croppic.min.js',function(){
-      var croppedImg=null;
       var cropperHeader = new Croppic('yourId',{
         uploadUrl:localUrl()+"?type=croppic",
         cropUrl:localUrl()+"?type=cropurl",
@@ -20,32 +59,18 @@ function page(){
         imgEyecandyOpacity:0.2,
         enableMousescroll:false,
 				loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',
-        onReset:function(data){
+        onReset:function(){
+          deleteyt();
         },
         onAfterImgUpload:function(data){
-          console.log(data)
+          upimg=data;
         },
         onAfterImgCrop:function(data){
           croppedImg=data.url;
+          deleteyt();
         },
         onAfterRemoveCroppedImg:function(){
-          var sendData={
-            type:"deletefile",
-            url:croppedImg
-          }
-          $.ajax({
-            type:'get',
-              url:localUrl(),
-              data:sendData,
-              dataType:"jsonp",
-              jsonp:"callback",
-              beforeSend:function(_this){
-                
-              },
-              success:function(data){
-                console.log(data)
-              }
-          });
+          deleteCrop();
         }
       });
     });

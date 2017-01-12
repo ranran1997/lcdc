@@ -52,9 +52,9 @@ function page(){
     $.getScript('libs/jquery.iframe-transport.js');
     $.getScript('libs/croppic.min.js',function(){
       var cropperHeader = new Croppic('yourId',{
-        uploadUrl:localUrl()+"?type=croppic",
-        cropUrl:localUrl()+"?type=cropurl",
-        baseUrl:service(),
+        uploadUrl:"http://192.168.4.151/LCDC/app/img_save_to_file.php",
+        cropUrl:"http://192.168.4.151/LCDC/app/img_crop_to_file.php",
+        baseUrl:"http://192.168.4.151/LCDC/app/",
         imgEyecandy:true,
         imgEyecandyOpacity:0.2,
         enableMousescroll:false,
@@ -84,6 +84,8 @@ function page(){
           type=type[type.length-1];
           $('<a href="'+data.files[0].url+'" class="file-list" id="'+data.files[0].size+'"><span class="iconfont icon-'+type+'"></span><span class="ib v-m">'+data.files[0].name+'</span><span class="t-r c-999">'+bytesToSize(data.files[0].size)+'</span><span class="iconfont icon-wrong t-r"></span></a>').appendTo($("#uploaded"))
           data.submit().success(function(result,textstatus,jqXHR){
+            alert(0)
+            console.log($('#'+result.files[0].size))
             $('#'+result.files[0].size).addClass("finish").attr("url",result.files[0].name)
 
             files.push(result.files[0].name);

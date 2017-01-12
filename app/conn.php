@@ -1,5 +1,5 @@
 <?
-  error_reporting(0);
+  //error_reporting(0);
   header("Access-Control-Allow-Origin: *");
   require_once ("lib/MysqliDb.php");
   require_once ("lib/dbObject.php");

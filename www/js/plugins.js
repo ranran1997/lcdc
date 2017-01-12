@@ -28,6 +28,9 @@ function removeByValue(arr, val) {
     }
   }
 }
+function projectType(){
+  return ['web app','native app','pc web','系统'];
+}
 ;(function($){  
     $.fn.extend({   
 	//将可选择的变量传递给方法

@@ -74,66 +74,47 @@ function page(){
         }
       });
     });
-    /*附件上传 */
-    $.getScript('libs/jquery.fileupload.js',function(){
-      $('#fileupload').fileupload({
-        dataType: 'json',
-        add:function(e,data){
-          $(".uploaded").addClass("data")
-          var type=data.files[0].name.split(".");
-          type=type[type.length-1];
-          $('<a href="'+data.files[0].url+'" class="file-list" id="'+data.files[0].size+'"><span class="iconfont icon-'+type+'"></span><span class="ib v-m">'+data.files[0].name+'</span><span class="t-r c-999">'+bytesToSize(data.files[0].size)+'</span><span class="iconfont icon-wrong t-r"></span></a>').appendTo($("#uploaded"))
-          data.submit().success(function(result,textstatus,jqXHR){
-            alert(0)
-            console.log($('#'+result.files[0].size))
-            $('#'+result.files[0].size).addClass("finish").attr("url",result.files[0].name)
 
-            files.push(result.files[0].name);
-          });
-        },
-        progressall:function(e,data){
-          var progress = parseInt(data.loaded / data.total * 100, 10);
-          if(progress==100){
-            //$("#progress").parents(".btn").attr("percent","已完成")
-          }else{
-            $("#progress").attr("percent",progress+"%")
-          }
-          $("#progress").css('width',progress+"%");
-        },
-        done: function (e, data) {
-          //console.log(files)
-          //删除
-          $(".file-list").children(".icon-wrong").click(function(){
-            var _this=$(this);
-            var sendData={
-              type:"deletefile",
-              url:"files/"+$(this).parents("a").attr("url")
-            }
-            $.ajax({
-              type:'get',
-              url:localUrl(),
-              data:sendData,
-              dataType:"jsonp",
-              jsonp:"callback",
-              beforeSend:function(_this){
-                
-              },
-              success:function(data){
-                if(data.text=="right"){
-                  _this.parents("a").remove();
-                  removeByValue(files,_this.parents("a").attr("url"))
-                }
-                console.log(files)
-                if($("#uploaded").children().length==0){
-                  $(".uploaded").removeClass("data");
-                  $("#progress").attr("percent","0%").css("width",0);
-                }
-              }
-            })
-            return false;
-          })
-        }
-      });
+    /*文件上传 */
+    $.getScript('libs/jquery.ui.widget.js');
+    $.getScript('libs/load-image.all.min.js');
+    $.getScript('libs/canvas-to-blob.min.js');
+    $.getScript('libs/jquery.iframe-transport.js');
+    $.getScript('libs/jquery.fileupload.js',function(){
+      $.getScript('libs/jquery.fileupload-process.js');
+      $.getScript('libs/jquery.fileupload-image.js');
+      $.getScript('libs/jquery.fileupload-audio.js');
+      $.getScript('libs/jquery.fileupload-video.js');
+      $.getScript('libs/jquery.fileupload-validate.js');
+      var file=$("#fileupload").fileupload({
+        dataType:'json',
+        autoUpload:true
+      })
+      file.on('fileuploadadd',function(e,data){
+        $.each(data.files,function(index,file){
+          var type=file.name.split(".");
+          type=type[type.length-1];
+          $('<a href="'+file.url+'" class="file-list" id="'+file.size+'"><span class="iconfont icon-'+type+'"></span><span class="ib v-m">'+file.name+'</span><span class="t-r c-999">'+bytesToSize(file.size)+'</span><span class="iconfont icon-wrong t-r"></span></a>').appendTo($("#uploaded"))
+        })
+      })
+      file.on('fileuploadalways',function(e,data){
+        $.each(data.files,function(index,file){
+          $("#"+file.size).addClass("finish")
+        })
+      })
+      file.on('fileuploadprocessalways',function(e,data){
+        //console.log(data)
+      })
+      file.on('fileuploadprogressall',function(e,data){
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+        $("#progress").css('width',progress+"%");
+      })
+      file.on('fileuploaddone',function(e,data){
+        //console.log(data)
+      })
+      file.on('fileuploadfail',function(e,data){
+        //console.log(data)
+      })
     });
-  });
+  })
 }

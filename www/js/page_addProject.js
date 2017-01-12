@@ -22,6 +22,9 @@ function page(){
 				loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',
         onReset:function(data){
         },
+        onAfterImgUpload:function(data){
+          console.log(data)
+        },
         onAfterImgCrop:function(data){
           croppedImg=data.url;
         },

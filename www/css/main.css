@@ -114,7 +114,7 @@ i{font-style:normal;}
 /*进度条*/
 .bar {height: 18px;background: green;}
 .bar:after{content:attr(percent);}
-.crop{display:inline-block;width:322px;height:182px;border:1px solid #EDEDED;border-radius:0.5rem;position:relative;}
+.crop{display:inline-block;width:322px;height:182px;border:1px solid #EDEDED;border-radius:0.5rem;position:relative;overflow:hidden;}
 /*select*/
 .select{display:inline-block;position:relative;}
 .select select{font-size:1.4rem;padding:1rem;width:100%;border:1px solid #EDEDED;border-radius:0.5rem;}

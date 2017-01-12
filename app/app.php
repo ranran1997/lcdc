@@ -274,5 +274,15 @@
       }
         print json_encode($response);
     break;
+    case "deletefile":
+      $file=$_GET['url'];
+      if(unlink($file)){
+        $result=array(
+          'text'=>'right',
+          'file'=>$file
+        );
+        echo $jsonp.'('.json_encode($result).')';
+      }
+    break;
   }
 ?>

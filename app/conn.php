@@ -42,4 +42,11 @@
     }
     return $pageURL;
 }
+function del_dir($dir){
+    if(strtoupper(substr(php_os, 0, 3)) == 'win') {
+        $str = "rmdir /s/q " . $dir;
+    } else {
+        $str = "rm -rf " . $dir;
+    }
+}
 ?>

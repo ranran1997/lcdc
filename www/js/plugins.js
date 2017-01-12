@@ -20,6 +20,14 @@ function bytesToSize(bytes) {
         i = Math.floor(Math.log(bytes) / Math.log(k));
    return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
 }
+function removeByValue(arr, val) {
+  for(var i=0; i<arr.length; i++) {
+    if(arr[i] == val) {
+      arr.splice(i, 1);
+      break;
+    }
+  }
+}
 ;(function($){  
     $.fn.extend({   
 	//将可选择的变量传递给方法

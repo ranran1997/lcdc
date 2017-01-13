@@ -32,7 +32,7 @@
           'author'=>'char(10)',
           'view'=>'int(5)',
           'github'=>'char(40)',
-          'file'=>'char(50)',
+          'file'=>'text(500)',
           'img'=>'char(50)',
           'createdAt' => 'datetime',
           'updatedAt' => 'datetime',

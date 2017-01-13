@@ -15,7 +15,6 @@ function init(){
       username:$("input[name=username]").val(),
       password:$("input[name=password]").val()
     }
-    console.log(sendData)
     $.ajax({
       type:'get',
       url:localUrl(),

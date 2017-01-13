@@ -1,6 +1,7 @@
 header();
 function header(){
   $.getScript('libs/jquery.cookie.js',function(){
+    var login=$.cookie("logined")
     var data = {
       "title": "资源库",
       "menu":[{
@@ -16,7 +17,7 @@ function header(){
         url:"/articles",
         icon:""
       }],
-      "user":$.cookie("logined"),
+      "user":login,
       "submenu":[{
         text:"个人中心",
         url:"#/home",

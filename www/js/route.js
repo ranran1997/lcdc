@@ -25,11 +25,11 @@ function header(){
       },{
         text:"写文章",
         url:"#/articles/publish",
-        icon:""
+        icon:"icon-edit"
       },{
         text:"新增项目",
         url:"#/projects/add",
-        icon:""
+        icon:"icon-project"
       },{
         text:"退出登录",
         url:"javascript:;",

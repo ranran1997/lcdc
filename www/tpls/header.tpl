@@ -12,7 +12,7 @@
   </div>
   <?}else{?>
   <div class="user-info">
-    <a href="#/home"><?=@user?></a>
+    <a href="#/home"><span class="iconfont icon-nan v-m face"></span><?=@user?><span class="iconfont icon-down v-m"></span></a>
     <div class="sub-menu">
       <?for(var i=0; i<@submenu.length; i++){?>
         <a href="<?=@submenu[i].url?>"><span class="iconfont v-m mr-5 <?=@submenu[i].icon?>"></span><span class="v-m"><?=@submenu[i].text?></span></a>

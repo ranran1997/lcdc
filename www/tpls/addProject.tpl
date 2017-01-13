@@ -16,7 +16,9 @@
         <td align="left">
           <div class="select w">
             <select name="type" id="type">
-              
+              <?for(var i=0;i<@catory.length;i++){?>
+              <option value="<?=i+1?>"><?=@catory[i]?></option>
+              <?}?>
             </select>
           </div>
         </td>

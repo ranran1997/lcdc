@@ -2,6 +2,7 @@
   require_once('conn.php');
   $user=dbObject::table("users");
   $article=dbObject::table("articles");
+  $project=dbObject::table("projects");
   if(!isset($_GET["type"])) page::dely();
   $type=$_GET["type"];
   if(isset($_GET['callback'])){
@@ -164,6 +165,31 @@
         $result=array(
           'text'=>'right',
           'file'=>$file
+        );
+        echo $jsonp.'('.json_encode($result).')';
+      }
+    break;
+    case 'addProject':
+      $catory=$_GET['catory'];
+      $secret=$_GET['secret'];
+      $img=$_GET['img'];
+      $time=$_GET['time'];
+      $title=$_GET['title'];
+      $preview=$_GET['preview'];
+      $github=$_GET['github'];
+      $files=$_GET['files'];
+      $project->type=$catory;
+      $project->secret=$secret;
+      $project->img=$img;
+      $project->createdAt=$time;
+      $project->title=$title;
+      $project->url=$preview;
+      $project->github=$github;
+      $project->file=$files;
+      $id=$project->save();
+      if($id){
+        $result=array(
+          'id'=>$id
         );
         echo $jsonp.'('.json_encode($result).')';
       }

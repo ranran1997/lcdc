@@ -4,7 +4,8 @@ function page(){
   var croppedImg=null;
   var upimg=null;
   var set={
-    url:url
+    url:url,
+    catory:projectType()
   }
   function deleteyt(){
     var sendData={
@@ -44,9 +45,43 @@ function page(){
         }
     });
   }
+  function submit(){
+    var sendData={
+      type:"addProject",
+      catory:$("#type option:selected").val(),
+      secret:$("input[name=secret]:checked").val(),
+      time:$("#time").val(),
+      title:$("#title").val(),
+      preview:$("#preview").val(),
+      github:$("#github").val(),
+      files:files.join(","),
+      img:croppedImg
+    }
+    $.ajax({
+      type:'get',
+      url:localUrl(),
+      data:sendData,
+      dataType:"jsonp",
+      jsonp:"callback",
+      beforeSend:function(_this){
+        
+      },
+      success:function(data){
+        if(data.id>0){
+          window.location.href="#/projects/"+data.id;
+        }
+      },
+      error:function(a,b,c){
+        console.log(a,b,c)
+      }
+    })
+  }
   nodetpl.get('tpls/addProject.tpl', set, function(d){
     document.querySelector("#view").innerHTML=d;
     document.title="新增项目";
+    $("#publish").click(function(){
+      submit();
+    })
     /*添加日期控件 */
     $.getScript("libs/flatpickr.min.js",function(){
       $("#time").flatpickr();

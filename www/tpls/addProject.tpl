@@ -42,9 +42,9 @@
       <tr>
         <th>创建时间：</th>
         <td>
-          <div class="input"><input type="text" name="time" id="time" placeholder="请填写项目创建时间"/></div>
+          <div class="input"><input type="text" name="time" id="time" placeholder="请填写项目创建时间"/><span class="iconfont icon-riqi right c-999"></span></div>
         </td>
-        <td colspan="2" class="t-l v-m fs-14 c-red with-text">不填默认是系统当前时间！</td>
+        <td colspan="2" class="t-l v-m fs-14 c-pink with-text">不填默认是系统当前时间！</td>
       </tr>
       <tr>
         <th>项目名称：</th>
@@ -55,13 +55,13 @@
       <tr>
         <th>预览地址：</th>
         <td colspan="3">
-          <div class="input"><input type="text" name="preview" id="preview" placeholder="在线预览地址"/></div>
+          <div class="input"><input type="text" name="preview" id="preview" placeholder="在线预览地址"/><span class="iconfont icon-yulan right c-999"></span></div>
         </td>
       </tr>
       <tr>
         <th>github库：</th>
         <td colspan="3">
-          <div class="input"><input type="text" name="github" id="github" placeholder="github地址"/></div>
+          <div class="input"><input type="text" name="github" id="github" placeholder="github地址"/><span class="iconfont icon-github right c-999"></span></div>
         </td>
       </tr>
       <tr>

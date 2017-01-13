@@ -52,6 +52,7 @@ i{font-style:normal;}
 .input input:focus{transform: translateY(-1px);box-shadow:2px 3px 5px #eee;}
 .input input:focus + .iconfont{color:#E64C65;}
 .input .iconfont{position:absolute;left:1rem;top:50%;transform: translateY(-50%);font-size:2.6rem;color:#666;z-index:11;}
+.input .iconfont.right{left:auto;right:1rem;color:#999;}
 .input .icon-right{position:absolute;right:1rem;top:50%;transform: translateY(-50%);font-size:2rem;display:none;}
 .input label{position:absolute;left:3.5rem;top:50%;transform: translateY(-50%);color:#999;pointer-events: none;z-index:1;display:inline-block;padding:1rem 0;transition:0.3s;}
 .input input:focus + .iconfont + label{top:0;transform: translateY(-100%);left:0;}
@@ -126,10 +127,11 @@ i{font-style:normal;}
 .file-list span{display:table-cell;vertical-align:middle;}
 .file-list .loading{display:inline-block;width:0;height:100%;position:absolute;left:0;top:0;background:rgba(46,183,41,0.05)}
 .file-list .iconfont{font-size:2.4rem;margin-right:0.5rem;width:3rem;}
-.uploaded{display:block;padding:1rem;border:1px solid #EDEDED;margin-top:1rem;border-radius:0.5rem;position:relative;}
+.uploaded{display:block;padding:1.5rem;border:1px solid #EDEDED;margin-top:1.5rem;border-radius:0.5rem;position:relative;}
 .uploaded .icon-fujian{font-size:7rem;color:#f1f1f1;}
 .uploaded.data .notice{display:none;}
 .uploaded .loading{position:absolute;top:0;left:0;height:2px;background:#2EB729;display:inline-block;z-index:10;}
+.uploaded.data .loading:after{content:attr(loading);position:absolute;right:0;top:0;font-size:1rem;transform:translate(100%,-50%);color:#2EB729;}
 /*上传完成图标颜色*/
 .finish .icon-doc{color:#4CABFF;}
 .finish .icon-ppt{color:#C35132;}

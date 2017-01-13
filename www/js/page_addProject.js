@@ -47,6 +47,10 @@ function page(){
   nodetpl.get('tpls/addProject.tpl', set, function(d){
     document.querySelector("#view").innerHTML=d;
     document.title="新增项目";
+    /*添加日期控件 */
+    $.getScript("libs/flatpickr.min.js",function(){
+      $("#time").flatpickr();
+    })
     /*封面裁剪 */
     $.getScript('libs/jquery.ui.widget.js');
     $.getScript('libs/jquery.iframe-transport.js');
@@ -95,7 +99,7 @@ function page(){
         $.each(data.files,function(index,file){
           var type=file.name.split(".");
           type=type[type.length-1];
-          $('<a href="javascript:;" class="file-list" id="'+file.size+'"><span class="iconfont icon-'+type+'"></span><span class="ib v-m">'+file.name+'</span><span class="t-r c-999">'+bytesToSize(file.size)+'</span><span class="iconfont icon-wrong t-r"></span><span class="loading"></span></a>').appendTo($("#uploaded"))
+          $('<a href="javascript:;" class="file-list" id="'+file.size+'"><span class="iconfont icon-'+type+'"></span><span class="ib v-m">'+file.name+'</span><span class="t-r c-999">'+bytesToSize(file.size)+'</span><span class="iconfont icon-wrong t-r"></span></a>').appendTo($("#uploaded"))
         })
         var up=data.submit();
         up.always(function(e,data){
@@ -116,7 +120,7 @@ function page(){
       file.on('fileuploadprogressall',function(e,data){
         var progress = parseInt(data.loaded / data.total * 100, 10);
         $("#progress").css('width',progress+"%");
-        
+        $("#progress").attr('loading',progress+"%");
       })
       file.on('fileuploaddone',function(e,data){
         

@@ -97,19 +97,21 @@ function page(){
           type=type[type.length-1];
           $('<a href="javascript:;" class="file-list" id="'+file.size+'"><span class="iconfont icon-'+type+'"></span><span class="ib v-m">'+file.name+'</span><span class="t-r c-999">'+bytesToSize(file.size)+'</span><span class="iconfont icon-wrong t-r"></span><span class="loading"></span></a>').appendTo($("#uploaded"))
         })
+        var up=data.submit();
+        up.always(function(e,data){
+          $.each(e.files,function(index,file){
+            $("#"+file.size).addClass("finish").attr("url",file.name);
+            files.push(file.name);
+          })
+        })
       })
       file.on('fileuploadalways',function(e,data){
-        $.each(data.files,function(index,file){
-          console.log(file)
-          $("#"+file.size).addClass("finish").attr("url",file.name);
-          files.push(file.name);
-        })
+        
       })
       file.on('fileuploadprocessalways',function(e,data){
-        $.each(data.files,function(index,file){
-          //console.log(file.name)
-        })
-        //console.log(data)
+        var index=data.index;
+        var file=data.files[index];
+        console.log(index,file)
       })
       file.on('fileuploadprogressall',function(e,data){
         var progress = parseInt(data.loaded / data.total * 100, 10);

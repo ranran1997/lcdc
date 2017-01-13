@@ -4,7 +4,11 @@
   $article=dbObject::table("articles");
   if(!isset($_GET["type"])) page::dely();
   $type=$_GET["type"];
-  $jsonp=$_GET["callback"];
+  if(isset($_GET['callback'])){
+    $jsonp=$_GET["callback"];
+  }else{
+    $jsonp="callback";
+  }
   switch($type){
     //注册
     case 'reg':

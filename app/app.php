@@ -216,5 +216,15 @@
       );
       echo $jsonp.'('.json_encode($result).')';
     break;
+    case "project_list":
+      $catory=$_GET['catory'];
+      $page=1;
+      $db->pageLimit=10;
+      if($catory>0){
+        $db->where("type",$catory);
+      }
+      $stats=$db->arraybuilder()->paginate("projects",$page);
+      echo $jsonp.'('.json_encode($stats).')';
+    break;
   }
 ?>

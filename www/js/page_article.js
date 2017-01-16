@@ -14,7 +14,6 @@ function page(id){
       
     },
     success:function(data){
-      console.log(data)
       nodetpl.get('tpls/article_detail.tpl', data, function(d){
         document.querySelector("#view").innerHTML=d;
         document.title=data.title;

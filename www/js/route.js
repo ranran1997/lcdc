@@ -10,7 +10,7 @@ function header(){
         icon:""
       },{
         text:"项目",
-        url:"/projects",
+        url:"/projects/type/0",
         icon:""
       },{
         text:"文章",
@@ -51,12 +51,10 @@ var home = function () {
     //init();
   });
 };
-var project = function () {
-  document.title="项目";
-  nodetpl.get('tpls/projects.tpl', null, function(d){
-    document.querySelector("#view").innerHTML=d;
-    //init();
-  });
+var project = function (id) {
+  $.getScript("js/page_projectList.js",function(){
+    page(id);
+  })
 };
 var register=function(){
   document.title="注册";
@@ -153,7 +151,7 @@ var project_detail=function(id){
 }
 var routes = {
   '/': home,
-  '/projects':project,
+  '/projects/type/:Id':project,
   '/projects/add':addProject,
   '/projects/:Id':project_detail,
   '/register':register,

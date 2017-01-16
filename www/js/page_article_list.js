@@ -13,7 +13,13 @@ function page(id){
       
     },
     success:function(data){
-      console.log(data)
+      if(data.length==0){
+        nodetpl.get('tpls/null.tpl',null,function(d){
+          document.querySelector("#view").innerHTML=d;
+          document.title="没有数据";
+        })
+        return false;
+      }
       nodetpl.get('tpls/articles.tpl', {
         'list':data
       }, function(d){

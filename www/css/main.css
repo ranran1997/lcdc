@@ -161,3 +161,10 @@ i{font-style:normal;}
 .project-info .row .col:nth-child(2){width:60%;text-align:left;}
 .project-info .row .col:nth-child(3){width:35%;text-align:right;}
 .project-info .with-bg{background:#f9f9f9;}
+/*项目列表*/
+.project-list{display:block;font-size:0;margin:-1rem;text-align:left;padding:1rem;}
+.project-list li{display:inline-block;width:25%;padding:1rem;}
+.project-list li .item{display:inline-block;width:100%;border:1px solid #f1f1f1;border-radius:0.3rem;}
+.project-list li .title{font-size:1.6rem;font-weight:normal;padding:0.5rem;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#666;}
+.ball-scale-multiple{display:inline-block;}
+.ball-beat>div, .ball-scale-multiple>div{background:#E64C65;}

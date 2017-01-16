@@ -55,6 +55,7 @@ function page(){
       preview:$("#preview").val(),
       github:$("#github").val(),
       files:JSON.stringify(files),
+      content:upimg,
       img:croppedImg
     }
     $.ajax({
@@ -64,6 +65,7 @@ function page(){
       dataType:"jsonp",
       jsonp:"callback",
       beforeSend:function(_this){
+        console.log(sendData)
       },
       success:function(data){
         if(data.id>0){
@@ -98,14 +100,14 @@ function page(){
         enableMousescroll:false,
 				loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',
         onReset:function(){
-          deleteyt();
+          //deleteyt();
         },
         onAfterImgUpload:function(data){
           upimg=data;
         },
         onAfterImgCrop:function(data){
           croppedImg=data.url;
-          deleteyt();
+          //deleteyt();
         },
         onAfterRemoveCroppedImg:function(){
           deleteCrop();

@@ -179,6 +179,7 @@
       $github=$_GET['github'];
       $files=$_GET['files'];
       $project->type=$catory;
+      $project->content=$upimg;
       $project->secret=$secret;
       $project->img=$img;
       $project->createdAt=$time;
@@ -209,7 +210,8 @@
         'img'=>$stats[img],
         'file'=>$stats[file],
         'github'=>$stats[github],
-        'view'=>$stats[view]
+        'view'=>$stats[view],
+        'content'=>$stats[content]
       );
       echo $jsonp.'('.json_encode($result).')';
     break;

@@ -54,7 +54,7 @@ function page(){
       title:$("#title").val(),
       preview:$("#preview").val(),
       github:$("#github").val(),
-      files:files.join(","),
+      files:JSON.stringify(files),
       img:croppedImg
     }
     $.ajax({
@@ -64,7 +64,6 @@ function page(){
       dataType:"jsonp",
       jsonp:"callback",
       beforeSend:function(_this){
-        
       },
       success:function(data){
         if(data.id>0){
@@ -140,7 +139,7 @@ function page(){
         up.always(function(e,data){
           $.each(e.files,function(index,file){
             $("#"+file.size).addClass("finish").attr("url",file.name);
-            files.push(file.name);
+            files.push({'name':file.name,'size':bytesToSize(file.size)});
           })
         })
       })

@@ -1,0 +1,7 @@
+<div class="row h w content p-30 bg-white r-5">
+  <div class="col v-t t-c w-60 article">
+    <h1 class="title"><?=@title?></h1>
+    <p class="t-r"><span>作者：<?=@author?></span><span>发布时间：<?=@time?></span></p>
+    <img src="<?=@img?>" alt="">
+  </div>
+</div>

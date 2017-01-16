@@ -194,5 +194,24 @@
         echo $jsonp.'('.json_encode($result).')';
       }
     break;
+    case 'get_project':
+      $id=intval($_GET['id']);
+      $db->where("id",$id);
+      $stats=$db->getOne("projects");
+      $result=array(
+        'title'=>$stats[title],
+        'url'=>$stats[url],
+        'content'=>$stats[content],
+        'type'=>$stats[type],
+        'author'=>$stats[author],
+        'time'=>$stats[createdAt],
+        'secret'=>$stats[secret],
+        'img'=>$stats[img],
+        'file'=>$stats[file],
+        'github'=>$stats[github],
+        'view'=>$stats[view]
+      );
+      echo $jsonp.'('.json_encode($result).')';
+    break;
   }
 ?>

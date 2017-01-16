@@ -146,10 +146,16 @@ var addProject=function(){
     page();
   })
 }
+var project_detail=function(id){
+  $.getScript('js/page_projectDetail.js',function(){
+    page(id);
+  })
+}
 var routes = {
   '/': home,
   '/projects':project,
   '/projects/add':addProject,
+  '/projects/:Id':project_detail,
   '/register':register,
   '/login':login,
   '/register_ok':register_ok,

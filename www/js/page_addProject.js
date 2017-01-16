@@ -55,7 +55,7 @@ function page(){
       preview:$("#preview").val(),
       github:$("#github").val(),
       files:JSON.stringify(files),
-      content:upimg,
+      content:service()+upimg,
       img:croppedImg
     }
     $.ajax({
@@ -65,7 +65,7 @@ function page(){
       dataType:"jsonp",
       jsonp:"callback",
       beforeSend:function(_this){
-        console.log(sendData)
+        console.log(sendData,upimg)
       },
       success:function(data){
         if(data.id>0){
@@ -82,6 +82,10 @@ function page(){
     document.title="新增项目";
     $("#publish").click(function(){
       submit();
+    })
+    $("#repository").blur(function(){
+      $("#github").val("https://github.com/longrise/"+$(this).val())
+      $("#preview").val("https://www.web.swimly.cn/"+$(this).val())
     })
     /*添加日期控件 */
     $.getScript("libs/flatpickr.min.js",function(){
@@ -139,6 +143,7 @@ function page(){
         })
         var up=data.submit();
         up.always(function(e,data){
+          console.log(e)
           $.each(e.files,function(index,file){
             $("#"+file.size).addClass("finish").attr("url",file.name);
             files.push({'name':file.name,'size':bytesToSize(file.size)});

@@ -16,12 +16,13 @@ function page(id){
       data.file=eval(data.file);
       data.img=service()+data.img;
       $.each(data.file,function(index,file){
-        file.name=service()+"files/"+file.name;
+        file.url=service()+"files/"+file.name;
+        file.type=file.name.split('.')[1];
       })
       console.log(data)
       nodetpl.get('tpls/project_detail.tpl', data, function(d){
         document.querySelector("#view").innerHTML=d;
-        document.title="项目";
+        document.title=data.title;
       })
     }
   })

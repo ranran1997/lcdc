@@ -178,6 +178,7 @@
       $preview=$_GET['preview'];
       $github=$_GET['github'];
       $files=$_GET['files'];
+      $upimg=$_GET['content'];
       $project->type=$catory;
       $project->content=$upimg;
       $project->secret=$secret;

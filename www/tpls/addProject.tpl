@@ -36,7 +36,7 @@
           </div>
         </td>
         <th>封面：</th>
-        <td rowspan="4" class="hidden">
+        <td rowspan="5" class="hidden">
           <div class="crop" id="yourId"></div>
           <p class="ib v-m fs-14 c-999 t-l lh-15 p-10">提示：项目封面图片为jpg、png、gif，限制尺寸为320*180，也可以上传之后进行裁剪！</p>
         </td>
@@ -46,7 +46,10 @@
         <td>
           <div class="input"><input type="text" name="time" id="time" placeholder="请填写项目创建时间"/><span class="iconfont icon-riqi right c-999"></span></div>
         </td>
-        <td colspan="2" class="t-l v-m fs-14 c-pink with-text">不填默认是系统当前时间！</td>
+        <th>仓库名称：</th>
+        <td>
+          <div class="input"><input type="text" name="repository" id="repository" placeholder="项目名称"/></div>
+        </td>
       </tr>
       <tr>
         <th>项目名称：</th>
@@ -55,15 +58,16 @@
         </td>
       </tr>
       <tr>
-        <th>预览地址：</th>
-        <td colspan="3">
-          <div class="input"><input type="text" name="preview" id="preview" placeholder="在线预览地址"/><span class="iconfont icon-yulan right c-999"></span></div>
-        </td>
-      </tr>
       <tr>
         <th>github库：</th>
         <td colspan="3">
           <div class="input"><input type="text" name="github" id="github" placeholder="github地址"/><span class="iconfont icon-github right c-999"></span></div>
+        </td>
+      </tr>
+      <tr>
+        <th>预览地址：</th>
+        <td colspan="3">
+          <div class="input"><input type="text" name="preview" id="preview" placeholder="在线预览地址"/><span class="iconfont icon-yulan right c-999"></span></div>
         </td>
       </tr>
       <tr>

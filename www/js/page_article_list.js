@@ -10,7 +10,10 @@ function page(id){
     dataType:"jsonp",
     jsonp:"callback",
     beforeSend:function(_this){
-      
+      nodetpl.get('tpls/loading.tpl',null, function(d){
+        document.title="加载中";
+        document.querySelector("#view").innerHTML=d;
+      });
     },
     success:function(data){
       if(data.length==0){

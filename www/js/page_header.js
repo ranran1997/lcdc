@@ -13,7 +13,7 @@ function header(){
         icon:""
       },{
         text:"文章",
-        url:"/articles",
+        url:"/articles/type/0",
         icon:""
       }],
       "user":login,

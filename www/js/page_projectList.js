@@ -1,7 +1,7 @@
 function page(id){
   var page=1;
   var pageSize=12;
-  var type=0;
+  var type=id;
   load(type,page,pageSize,function(){
     nodetpl.get('tpls/loading.tpl',null, function(d){
       document.title="加载中";
@@ -11,6 +11,13 @@ function page(id){
     $.each(data,function(index,item){
       item.img=service()+item.img;
     })
+    if(data.length==0){
+      nodetpl.get('tpls/null.tpl',null,function(d){
+        document.querySelector("#view").innerHTML=d;
+        document.title="没有数据";
+      })
+      return false;
+    }
     nodetpl.get('tpls/projects.tpl', {
       'list':data
     }, function(d){
@@ -43,6 +50,14 @@ function page(id){
         }
       })
     });
+  });
+  /*生成导航 */
+  nodetpl.get('tpls/footer.tpl', {
+    'type':'projects',
+    'list':projectType()
+  }, function(d){
+    document.querySelector("#footer").innerHTML=d;
+    $(".fixed-menu").children("a").eq(type).addClass("active")
   });
   function load(catory,page,pagesize,before,callback){
     var sendData={

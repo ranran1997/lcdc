@@ -62,34 +62,14 @@ var activation_ok=function(){
     //init();
   });
 }
-var articles=function(){
-  console.log(0)
+var articles=function(id){
   $.getScript('js/page_article_list.js',function(){
-    page(0);
+    page(id);
   });
 }
 var article_publish=function(){
-  $.getScript('libs/editormd.min.js',function(){
-    $.getScript('js/page_article_publish.js',function(){
-      nodetpl.get('tpls/article_publish.tpl', null, function(d){
-        document.querySelector("#view").innerHTML=d;
-        document.title="发布文章";
-        var editor = editormd("editormd", {
-            path : "./libs/",
-            emoji:true,
-            codeFold:true,
-            searchReplace:true,
-            flowChat:true,
-            sequeceDiagram:true,
-            taskList:true,
-            tocm:true,
-            tex:true,
-            markdown:"",
-            height:"80%"
-        });
-        init(editor);
-      });
-    })
+  $.getScript('js/page_article_publish.js',function(){
+    page()
   });
 }
 var article=function(id){
@@ -117,7 +97,7 @@ var routes = {
   '/register_ok':register_ok,
   '/activation':activation,
   '/activation_ok':activation_ok,
-  '/articles':[articles],
+  '/articles/type/:Id':articles,
   "/articles/publish":article_publish,
   "/articles/:Id":article
 };

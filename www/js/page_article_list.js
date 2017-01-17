@@ -1,13 +1,21 @@
 function page(id){
   var page=1;
-  var pageSize=2;
-  var type=0;
-  load(type,page,pageSize,function(){
+  var pageSize=5;
+  var type=id;
+  load(type,page,pageSize,
+  function(){
     nodetpl.get('tpls/loading.tpl',null, function(d){
       document.title="加载中";
       document.querySelector("#view").innerHTML=d;
+      $.getScript("libs/marked.min.js",function(){a=true;});
+      $.getScript("libs/prettify.min.js",function(){b=true;});
+      $.getScript("libs/raphael.min.js",function(){c=true;});
+      $.getScript("libs/underscore.min.js",function(){d=true;});
+      $.getScript("libs/sequence-diagram.min.js",function(){e=true;});
+      $.getScript("libs/flowchart.min.js",function(){f=true;});
     });
-  },function(data){
+  },
+  function(data){
     console.log(data)
     if(data.length==0){
       nodetpl.get('tpls/null.tpl',null,function(d){
@@ -21,58 +29,21 @@ function page(id){
     }, function(d){
       document.querySelector("#view").innerHTML=d;
       document.title="文章";
+      md(data)
       $(".load-more").click(function(){
         var _this=$(this);
         var page=parseInt(_this.attr("page"))
         if(_this.children("span").text()==="没有更多了") return false;
         load(type,page,pageSize,function(){
           _this.addClass("loading").children("span").text("加载中");
-          _this.attr("page",parseInt(_this.attr("page"))+1)
+          _this.attr("page",parseInt(_this.attr("page"))+1);
         },function(data){
           console.log(data)
           nodetpl.get('tpls/articles_item.tpl', {
             'list':data
           }, function(d){
             $(d).appendTo(".list");
-            $.getScript('libs/editormd.min.js',function(){
-              for(var i=0;i<data.length;i++){
-                var options={
-                  container:"editormd"+(i+1),
-                  basePath:"./libs/epiceditor",
-                  parser: marked,
-                  file: {
-                    name: 'epiceditor',
-                    defaultContent: '## nihao',
-                    autoSave: 100
-                  },
-                  theme: {
-                    base: '/themes/base/epiceditor.css',
-                    preview: '/themes/preview/github.css',
-                    editor: '/themes/editor/epic-light.css'
-                  },
-                  button: {
-                    preview: true,
-                    fullscreen: true,
-                    bar: "hidden"
-                  },
-                  focusOnLoad: false,
-                  shortcut: {
-                    modifier: 18,
-                    fullscreen: 70,
-                    preview: 80
-                  },
-                  string: {
-                    togglePreview: 'Toggle Preview Mode',
-                    toggleEdit: 'Toggle Edit Mode',
-                    toggleFullscreen: 'Enter Fullscreen'
-                  },
-                  autogrow: true
-                }
-                var editor=new EpicEditor(options);
-                editor.load();
-                editor.preview();
-              }
-            });
+            md(data);
           })
           if(data.length<pageSize){
             _this.removeClass("loading").children("span").text("没有更多了")
@@ -83,6 +54,31 @@ function page(id){
       })
     });
   })
+  /*生成导航 */
+  nodetpl.get('tpls/footer.tpl', {
+    'type':'articles',
+    'list':articleType()
+  }, function(d){
+    document.querySelector("#footer").innerHTML=d;
+    $(".fixed-menu").children("a").eq(type).addClass("active")
+  });
+  function md(data){
+    $.getScript('libs/editormd.min.js',function(){
+      for(var i=0;i<data.length;i++){
+        console.log("editormd"+data[i].id)
+        editormd.markdownToHTML("editormd"+data[i].id,{
+          markdown        : data.content ,//+ "\r\n" + $("#append-test").text(),
+          htmlDecode      : "style,script,iframe",  // you can filter tags decode
+          tocm            : true,    // Using [TOCM]
+          emoji           : true,
+          taskList        : true,
+          tex             : true,  // 默认不解析
+          flowChart       : false,  // 默认不解析
+          sequenceDiagram : true,  // 默认不解析
+        })
+      }
+    });
+  }
   function load(type,page,pagesize,before,callback){
     var sendData={
       type:"article_list",

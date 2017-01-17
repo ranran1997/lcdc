@@ -15,6 +15,13 @@
         </li>
         <?}?>
       </ul>
+      <div class="load-more" page="2">
+        <span class="v-m">点击加载更多</span>
+        <div class="ball-clip-rotate-multiple ml-20">
+          <div></div>
+          <div></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

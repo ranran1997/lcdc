@@ -8,6 +8,7 @@ function page(id){
       document.querySelector("#view").innerHTML=d;
     });
   },function(data){
+    console.log(data)
     if(data.length==0){
       nodetpl.get('tpls/null.tpl',null,function(d){
         document.querySelector("#view").innerHTML=d;
@@ -33,43 +34,45 @@ function page(id){
             'list':data
           }, function(d){
             $(d).appendTo(".list");
-            for(var i=0;i<data.length;i++){
-              var options={
-                container:"editormd"+(i+1),
-                basePath:"./libs/epiceditor",
-                parser: marked,
-                file: {
-                  name: 'epiceditor',
-                  defaultContent: '## nihao',
-                  autoSave: 100
-                },
-                theme: {
-                  base: '/themes/base/epiceditor.css',
-                  preview: '/themes/preview/github.css',
-                  editor: '/themes/editor/epic-light.css'
-                },
-                button: {
-                  preview: true,
-                  fullscreen: true,
-                  bar: "hidden"
-                },
-                focusOnLoad: false,
-                shortcut: {
-                  modifier: 18,
-                  fullscreen: 70,
-                  preview: 80
-                },
-                string: {
-                  togglePreview: 'Toggle Preview Mode',
-                  toggleEdit: 'Toggle Edit Mode',
-                  toggleFullscreen: 'Enter Fullscreen'
-                },
-                autogrow: true
+            $.getScript('libs/editormd.min.js',function(){
+              for(var i=0;i<data.length;i++){
+                var options={
+                  container:"editormd"+(i+1),
+                  basePath:"./libs/epiceditor",
+                  parser: marked,
+                  file: {
+                    name: 'epiceditor',
+                    defaultContent: '## nihao',
+                    autoSave: 100
+                  },
+                  theme: {
+                    base: '/themes/base/epiceditor.css',
+                    preview: '/themes/preview/github.css',
+                    editor: '/themes/editor/epic-light.css'
+                  },
+                  button: {
+                    preview: true,
+                    fullscreen: true,
+                    bar: "hidden"
+                  },
+                  focusOnLoad: false,
+                  shortcut: {
+                    modifier: 18,
+                    fullscreen: 70,
+                    preview: 80
+                  },
+                  string: {
+                    togglePreview: 'Toggle Preview Mode',
+                    toggleEdit: 'Toggle Edit Mode',
+                    toggleFullscreen: 'Enter Fullscreen'
+                  },
+                  autogrow: true
+                }
+                var editor=new EpicEditor(options);
+                editor.load();
+                editor.preview();
               }
-              var editor=new EpicEditor(options);
-              editor.load();
-              editor.preview();
-            }
+            });
           })
           if(data.length<pageSize){
             _this.removeClass("loading").children("span").text("没有更多了")
@@ -77,45 +80,6 @@ function page(id){
             _this.removeClass("loading").children("span").text("点击加载更多")
           }
         })
-      })
-      $.getScript('libs/epiceditor/js/epiceditor.min.js',function(){
-        for(var i=0;i<data.length;i++){
-          var options={
-            container:"editormd"+(i+1),
-            basePath:"./libs/epiceditor",
-            parser: marked,
-            file: {
-              name: 'epiceditor',
-              defaultContent: '## nihao',
-              autoSave: 100
-            },
-            theme: {
-              base: '/themes/base/epiceditor.css',
-              preview: '/themes/preview/github.css',
-              editor: '/themes/editor/epic-light.css'
-            },
-            button: {
-              preview: true,
-              fullscreen: true,
-              bar: "hidden"
-            },
-            focusOnLoad: false,
-            shortcut: {
-              modifier: 18,
-              fullscreen: 70,
-              preview: 80
-            },
-            string: {
-              togglePreview: 'Toggle Preview Mode',
-              toggleEdit: 'Toggle Edit Mode',
-              toggleFullscreen: 'Enter Fullscreen'
-            },
-            autogrow: true
-          }
-          var editor=new EpicEditor(options);
-          editor.load();
-          editor.preview();
-        }
       })
     });
   })

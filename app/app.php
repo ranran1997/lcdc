@@ -218,8 +218,8 @@
     break;
     case "project_list":
       $catory=$_GET['catory'];
-      $page=1;
-      $db->pageLimit=10;
+      $page=$_GET['page'];
+      $db->pageLimit=$_GET['pagesize'];
       if($catory>0){
         $db->where("type",$catory);
       }

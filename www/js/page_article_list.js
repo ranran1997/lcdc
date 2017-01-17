@@ -28,6 +28,8 @@ function page(id){
       }, function(d){
         document.querySelector("#view").innerHTML=d;
         document.title="文章";
+        document.body.scrollTop=0;
+        Ps.update(document.body);
         $.getScript('libs/epiceditor/js/epiceditor.min.js',function(){
           for(var i=0;i<data.length;i++){
             var options={

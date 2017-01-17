@@ -20,6 +20,7 @@ function page(id){
       nodetpl.get('tpls/article_detail.tpl', data, function(d){
         document.querySelector("#view").innerHTML=d;
         document.title=data.title;
+        document.body.scrollTop=0;
         $.getScript('libs/epiceditor/js/epiceditor.min.js',function(){
           var options={
             container:"editormd",
@@ -56,6 +57,9 @@ function page(id){
           var editor=new EpicEditor(options);
           editor.load();
           editor.preview();
+          setTimeout(function(){
+            Ps.update(document.body);
+          },100)
         })
       });
     }

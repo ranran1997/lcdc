@@ -80,6 +80,8 @@ function page(){
   nodetpl.get('tpls/addProject.tpl', set, function(d){
     document.querySelector("#view").innerHTML=d;
     document.title="新增项目";
+    document.body.scrollTop=0;
+    Ps.update(document.body);
     $("#publish").click(function(){
       submit();
     })
@@ -96,9 +98,9 @@ function page(){
     $.getScript('libs/jquery.iframe-transport.js');
     $.getScript('libs/croppic.min.js',function(){
       var cropperHeader = new Croppic('yourId',{
-        uploadUrl:"http://192.168.4.151/LCDC/app/img_save_to_file.php",
-        cropUrl:"http://192.168.4.151/LCDC/app/img_crop_to_file.php",
-        baseUrl:"http://192.168.4.151/LCDC/app/",
+        uploadUrl:service()+"img_save_to_file.php",
+        cropUrl:service()+"img_crop_to_file.php",
+        baseUrl:service(),
         imgEyecandy:true,
         imgEyecandyOpacity:0.2,
         enableMousescroll:false,

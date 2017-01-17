@@ -137,8 +137,8 @@
       $stats=$db->getOne("articles");
       $result=array(
         'title'=>$stats[title],
-        'url'=>$stats[url],
-        'content'=>$stats[content],
+        'file'=>$stats[url],
+        'type'=>$stats[type],
         'author'=>$stats[author],
         'time'=>$stats[createdAt],
         'url'=>curPageURL()

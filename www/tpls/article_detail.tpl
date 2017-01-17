@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="css/editormd.preview.min.css">
 <div class="mid-layout">
   <div class="row h w content p-30 bg-white r-5">
     <div class="col v-t t-c w-60 article">

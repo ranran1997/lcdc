@@ -80,8 +80,6 @@ function page(){
   nodetpl.get('tpls/addProject.tpl', set, function(d){
     document.querySelector("#view").innerHTML=d;
     document.title="新增项目";
-    document.body.scrollTop=0;
-    Ps.update(document.body);
     $("#publish").click(function(){
       submit();
     })

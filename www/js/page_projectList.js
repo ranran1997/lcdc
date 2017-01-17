@@ -16,8 +16,6 @@ function page(id){
     }, function(d){
       document.title="项目";
       document.querySelector("#view").innerHTML=d;
-      document.body.scrollTop=0;
-      Ps.update(document.body);
       $(".load-more").click(function(){
         var _this=$(this);
         var page=parseInt(_this.attr("page"))

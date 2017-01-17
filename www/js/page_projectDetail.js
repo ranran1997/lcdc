@@ -26,8 +26,6 @@ function page(id){
       nodetpl.get('tpls/project_detail.tpl', data, function(d){
         document.querySelector("#view").innerHTML=d;
         document.title=data.title;
-        document.body.scrollTop=0;
-        Ps.update(document.body);
       })
     }
   })

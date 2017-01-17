@@ -37,9 +37,6 @@ function header(){
     };
     nodetpl.get('tpls/header.tpl', data, function(d){
       document.querySelector("#header").innerHTML=d;
-      $.getScript("libs/perfect-scrollbar.min.js",function(){
-        Ps.initialize(document.body);
-      });
     });
   });
 }

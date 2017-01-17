@@ -30,7 +30,7 @@ function removeByValue(arr, val) {
   }
 }
 function projectType(){
-  return ['全部','手机页面','手机app','门户网站','系统'];
+  return ['全部','手机页面','手机app','门户网站','系统','flash','视频'];
 }
 function articleType(){
   return ['全部','基础','技巧','分享','插件','框架'];

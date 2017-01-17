@@ -29,6 +29,12 @@ function page(id){
     }, function(d){
       document.querySelector("#view").innerHTML=d;
       document.title="文章";
+      var _this=$(".load-more")
+      if(data.length<pageSize){
+        _this.removeClass("loading").children("span").text("没有更多了")
+      }else{
+        _this.removeClass("loading").children("span").text("点击加载更多")
+      }
       md(data)
       $(".load-more").click(function(){
         var _this=$(this);

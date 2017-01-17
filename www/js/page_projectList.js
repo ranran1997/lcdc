@@ -1,6 +1,6 @@
 function page(id){
   var page=1;
-  var pageSize=12;
+  var pageSize=8;
   var type=id;
   load(type,page,pageSize,function(){
     nodetpl.get('tpls/loading.tpl',null, function(d){
@@ -23,6 +23,12 @@ function page(id){
     }, function(d){
       document.title="项目";
       document.querySelector("#view").innerHTML=d;
+      var _this=$(".load-more")
+      if(data.length<pageSize){
+        _this.removeClass("loading").children("span").text("没有更多了")
+      }else{
+        _this.removeClass("loading").children("span").text("点击加载更多")
+      }
       $(".load-more").click(function(){
         var _this=$(this);
         var page=parseInt(_this.attr("page"))

@@ -6,8 +6,8 @@ function page(catory,type){
   nodetpl.get('tpls/search_result.tpl',null, function(d){
     document.title="加载中";
     document.querySelector("#view").innerHTML=d;
-    var hash=window.location.hash.split("/");
-    var catory=hash[2];
+    var hash=localStorage.getItem("hash").split("/");
+    var catory=localStorage.getItem("catory");
     var type=hash[3];
     $("body").keydown(function(e){
       var _this=$("#search");
@@ -28,6 +28,7 @@ function page(catory,type){
           dataType:"jsonp",
           jsonp:"callback",
           beforeSend:function(){
+            console.log(sendData.catory,sendData.fenlei)
             nodetpl.get('tpls/loading.tpl',null, function(d){
               document.title="加载中";
               document.querySelector("#view").innerHTML=d;
@@ -39,8 +40,8 @@ function page(catory,type){
             }, function(d){
               document.title="加载中";
               document.querySelector("#view").innerHTML=d;
+              console.log(data)
             });
-            console.log(data)
           },
           error: function(XMLHttpRequest, textStatus, errorThrown) {
             console.log(XMLHttpRequest.status);

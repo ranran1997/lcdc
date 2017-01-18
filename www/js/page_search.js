@@ -1,4 +1,8 @@
 function page(catory,type){
+  $("body").Bar({
+    bar:setting()
+  })
+  $("body").Code();
   nodetpl.get('tpls/search_result.tpl',null, function(d){
     document.title="加载中";
     document.querySelector("#view").innerHTML=d;

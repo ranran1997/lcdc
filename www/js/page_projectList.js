@@ -1,4 +1,6 @@
 function page(id){
+  var hash=getHash();
+  var type=catory();
   $("body").Bar({
     link:'projects',
     type:id,

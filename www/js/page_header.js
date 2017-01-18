@@ -38,14 +38,17 @@ function header(){
     nodetpl.get('tpls/header.tpl', data, function(d){
       document.querySelector("#header").innerHTML=d;
       /*搜索 */
-      var hash=window.location.hash.split("/");
-      var type=hash[1];
+      var hash=getHash();
+      var type=catory();
       $(".search .iconfont").click(function(){
         var _this=$(this)
+        var str=localStorage.getItem("hash").split("/");
+        var type=str[str.length-1];
+        window.location.href="#/search/"+localStorage.getItem("catory")+"/"+type;
         if($(this).siblings("input").val()!=""){
           search(_this.parents('input').val(),_this.parents(".search"));
         }else{
-          $("body").toggleClass("show-search");
+          //$("body").toggleClass("show-search");
         }
       })
       $(".search input").keydown(function(e){

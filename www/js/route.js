@@ -87,6 +87,12 @@ var project_detail=function(id){
     page(id);
   })
 }
+var search=function(c,t){
+  console.log(c,t)
+  $.getScript('js/page_search.js',function(){
+    page(c,t);
+  })
+}
 var routes = {
   '/': home,
   '/projects/type/:Id':project,
@@ -99,7 +105,8 @@ var routes = {
   '/activation_ok':activation_ok,
   '/articles/type/:Id':articles,
   "/articles/publish":article_publish,
-  "/articles/:Id":article
+  "/articles/:Id":article,
+  "/search/:catory/:type":search
 };
 
 var router = Router(routes);

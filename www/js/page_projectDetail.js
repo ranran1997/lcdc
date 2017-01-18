@@ -1,4 +1,11 @@
 function page(id){
+  $("body").Bar({
+    link:'projects',
+    type:id,
+    nav:[],
+    bar:setting()
+  })
+  $("body").Code()
   var sendData={
     type:'get_project',
     id:id

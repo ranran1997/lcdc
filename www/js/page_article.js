@@ -1,9 +1,17 @@
 function page(id){
+  $("body").Bar({
+    link:'articles',
+    type:id,
+    nav:[],
+    bar:setting()
+  })
+  $("body").Code();
   var a,b,c,d,e,f=false;
   var sendData={
     type:"get_article",
     id:id
   }
+  initFooter('articles');
   //获取文章
   $.ajax({
     type:'get',

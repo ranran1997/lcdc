@@ -35,6 +35,39 @@ function projectType(){
 function articleType(){
   return ['全部','基础','技巧','分享','插件','框架'];
 }
+function initFooter(){}
+function setting(){
+  return [{
+    text:"意见反馈",
+    icon:"icon-liuyan",
+    effect:'reback()'
+  },{
+    text:"手机浏览",
+    icon:"icon-code",
+    effect:'getCode()'
+  },{
+    text:"返回顶部",
+    icon:"icon-uptop",
+    effect:"gotop()"
+  }]
+}
+function gotop(){
+  $("html,body").animate({scrollTop:0},300)
+}
+function getCode(){
+  
+}
+function showbar(){
+  $(window).bind('scroll',function(e){
+    var top=$(this).scrollTop()
+    console.log(top)
+    if(top>40){
+      $("body").addClass("show-pageDone");
+    }else{
+      $("body").removeClass("show-pageDone");
+    }
+  })
+}
 ;(function($){  
     $.fn.extend({   
 	//将可选择的变量传递给方法
@@ -65,6 +98,51 @@ function articleType(){
                   },30)
                 },2000)
             });  
-        }  
+        },
+        Bar: function(options) {  
+            //设置默认值并用逗号隔开
+            var defaults = {
+              link:'',
+              type:null,
+              nav:[],
+              bar:[]
+            }  
+            var options =  $.extend(defaults, options);  
+            return this.each(function() {  
+                var o = options;  
+                var _this=$(this);
+                nodetpl.get('tpls/footer.tpl', {
+                  'type':o.link,
+                  'list':o.nav,
+                  'set':o.bar
+                }, function(d){
+                  document.querySelector("#footer").innerHTML=d;
+                  if(o.type=="null") return false;
+                  $(".fixed-menu").children("a").eq(o.type).addClass("active");
+                });
+            });  
+        },
+        Code: function(options) {  
+          //设置默认值并用逗号隔开
+          var defaults = {
+            
+          }  
+          var options =  $.extend(defaults, options);  
+          return this.each(function() {  
+              var o = options;  
+              var _this=$(this);
+              console.log("二维码")
+              $.getScript('libs/qrcode.min.js',function(){
+                  var qrcode = new QRCode(document.getElementById("qrcode"), {
+                    text:window.location.href,
+                    width: 100,
+                    height: 100,
+                    colorDark : "#E54C65",
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.H
+                });
+              })
+          });  
+        } 
     });    
 })(jQuery);  

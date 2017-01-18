@@ -1,4 +1,11 @@
 function page(id){
+  $("body").Bar({
+    link:'projects',
+    type:id,
+    nav:projectType(),
+    bar:setting()
+  })
+  $("body").Code();
   var page=1;
   var pageSize=8;
   var type=id;
@@ -60,7 +67,8 @@ function page(id){
   /*生成导航 */
   nodetpl.get('tpls/footer.tpl', {
     'type':'projects',
-    'list':projectType()
+    'list':projectType(),
+    'set':setting()
   }, function(d){
     document.querySelector("#footer").innerHTML=d;
     $(".fixed-menu").children("a").eq(type).addClass("active")

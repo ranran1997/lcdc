@@ -1,6 +1,6 @@
 <div class="mid-layout h">
   <h1 class="logo"><?=@title?></h1>
-  <ul class="block">
+  <ul class="block nav">
     <?for(var i=0; i<@menu.length; i++){?>
       <li class="ib"><a href="#<?=@menu[i].url?>"><?=@menu[i].text?></a></li>
     <?}?>

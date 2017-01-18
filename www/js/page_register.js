@@ -1,4 +1,8 @@
 function init(){
+  $("body").Bar({
+    bar:setting()
+  })
+  $("body").Code()
   var User,Email,Pwd;
   /*验证用户名是否存在 */
   var username="";

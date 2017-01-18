@@ -1,4 +1,11 @@
 function page(id){
+  $("body").Bar({
+    link:'articles',
+    type:id,
+    nav:articleType(),
+    bar:setting()
+  })
+  $("body").Code();
   var page=1;
   var pageSize=5;
   var type=id;
@@ -61,13 +68,7 @@ function page(id){
     });
   })
   /*生成导航 */
-  nodetpl.get('tpls/footer.tpl', {
-    'type':'articles',
-    'list':articleType()
-  }, function(d){
-    document.querySelector("#footer").innerHTML=d;
-    $(".fixed-menu").children("a").eq(type).addClass("active")
-  });
+  initFooter('articles');
   function md(data){
     $.getScript('libs/editormd.min.js',function(){
       for(var i=0;i<data.length;i++){

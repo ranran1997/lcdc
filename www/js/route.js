@@ -1,9 +1,9 @@
 $.getScript("js/page_header.js",function(){
   header();
 });
-nodetpl.get('tpls/footer.tpl', null, function(d){
-  document.querySelector("#footer").innerHTML=d;
-});
+$.getScript('js/page_footer.js',function(){
+  footer();
+})
 var home = function () {
   $.getScript("js/page_home.js",function(){
     page();

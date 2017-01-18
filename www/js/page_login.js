@@ -1,4 +1,8 @@
 function init(){
+  $("body").Bar({
+    bar:setting()
+  })
+  $("body").Code()
   /*登录*/
   $("#submit").click(function(){
     var _this=$(this);

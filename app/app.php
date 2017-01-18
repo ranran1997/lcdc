@@ -226,5 +226,13 @@
       $stats=$db->arraybuilder()->paginate("projects",$page);
       echo $jsonp.'('.json_encode($stats).')';
     break;
+    case "search":
+      $text=$_GET["text"];
+      $catory='lc_'.$_GET['catory'];
+      $start=$_GET['start'];
+      $pageSize=$_GET['pageSize'];
+      $result=$db->rawQuery("SELECT * FROM ".$catory." where title LIKE '%".$text."%' LIMIT $start,$pageSize");
+      echo $jsonp.'('.json_encode($result).')';
+    break;
   }
 ?>

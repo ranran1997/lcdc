@@ -54,7 +54,7 @@ function setting(){
 function gotop(){
   $("html,body").animate({scrollTop:0},300)
 }
-function getCode(){
+function reback(){
   
 }
 function showbar(){

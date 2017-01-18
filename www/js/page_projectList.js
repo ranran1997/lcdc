@@ -91,6 +91,9 @@ function page(id){
       },
       success:function(data){
         callback(data);
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        console.log(errorThrown)
       }
     })
   }

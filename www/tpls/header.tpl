@@ -5,6 +5,14 @@
       <li class="ib"><a href="#<?=@menu[i].url?>"><?=@menu[i].text?></a></li>
     <?}?>
   </ul>
+  <div class="search">
+    <a href="javascript:;" class="btn iconfont icon-search"></a>
+    <input type="search" placeholder="回车搜索">
+    <div class="ball-clip-rotate-multiple ml-20">
+      <div class="bg-white"></div>
+      <div></div>
+    </div>
+  </div>
   <?if(typeof @user=="undefined"){?>
   <div class="block user">
     <a class="ib" href="#/register">注册</a>

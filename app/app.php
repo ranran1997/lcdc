@@ -3,6 +3,8 @@
   $user=dbObject::table("users");
   $article=dbObject::table("articles");
   $project=dbObject::table("projects");
+  $ablum=dbObject::table("ablums");
+  $photo=dbObject::table("photos");
   if(!isset($_GET["type"])) page::dely();
   $type=$_GET["type"];
   if(isset($_GET['callback'])){
@@ -238,6 +240,15 @@
         $result=$db->rawQuery("SELECT * FROM ".$catory." where type=$type and title LIKE '%".$text."%' LIMIT $start,$pageSize");
       }
       echo $jsonp.'('.json_encode($result).')';
+    break;
+    case 'get_ablums':
+      $page=$_GET['page'];
+      $db->pageLimit=$_GET['pagesize'];
+      // if($catory>0){
+      //   $db->where("secret",$secret);
+      // }
+      $stats=$db->arraybuilder()->paginate("ablums",$page);
+      echo $jsonp.'('.json_encode($stats).')';
     break;
   }
 ?>

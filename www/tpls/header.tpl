@@ -2,7 +2,7 @@
   <h1 class="logo"><?=@title?></h1>
   <ul class="block nav">
     <?for(var i=0; i<@menu.length; i++){?>
-      <li class="ib"><a href="#<?=@menu[i].url?>"><?=@menu[i].text?></a></li>
+      <li class="ib"><a href="#<?=@menu[i].url?>" onclick="nav(this)"><?=@menu[i].text?></a></li>
     <?}?>
   </ul>
   <div class="search">

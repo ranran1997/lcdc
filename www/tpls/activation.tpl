@@ -1,5 +1,5 @@
 <div class="mid-layout">
-  <div class="content row mid-layout success">
+  <div class="content row w success">
     <div class="col v-m t-c">
       <img src="img/tu2.png"/>
       <p class="fs-16 c-9 mt-20 t-c">小样，还在看什么呢，你倒是快把激活码给我啊，没看我们都欢呼雀跃的欢迎你了！</p>

@@ -1,19 +1,13 @@
-function page(catory,type){
+function page(){
   $("body").Bar({
     bar:setting()
   })
-  $("body").Code();
-  getHash();
+  $("body").Code()
   var sendData={
-    type:"search",
-    text:unescape(localStorage.getItem("search")),
-    catory:catory,
-    fenlei:0,
-    start:0,
-    pageSize:10,
-    page:1
+    type:"get_ablums",
+    page:1,
+    pagesize:2
   }
-  console.log(catory,type)
   $.ajax({
     type:'get',
     url:localUrl(),
@@ -32,25 +26,17 @@ function page(catory,type){
     },
     success:function(data){
       if(data.length==0){
-        nodetpl.get('tpls/null.tpl',{
-          'list':data,
-          'catory':catory
-        }, function(d){
-          document.title="没有数据";
+        nodetpl.get('tpls/null.tpl', null, function(d){
           document.querySelector("#view").innerHTML=d;
         });
       }else{
-        nodetpl.get('tpls/search_result.tpl',{
-          'list':data,
-          'catory':catory
+        nodetpl.get('tpls/photo_list.tpl', {
+          'list':data
         }, function(d){
-          document.title="加载中";
           document.querySelector("#view").innerHTML=d;
+          document.title="图库";
         });
       }
-      $("body").removeClass("show-search")
-      $(".search input").val("")
-      $("body").unbind("keydown");
     },
     error: function(XMLHttpRequest, textStatus, errorThrown) {
       console.log(XMLHttpRequest.status);

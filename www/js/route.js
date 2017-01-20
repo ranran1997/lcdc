@@ -94,7 +94,9 @@ var search=function(c,t){
   })
 }
 var photo_list=function(){
-  
+  $.getScript('js/page_photoList.js',function(){
+    page();
+  });
 }
 var routes = {
   '/': home,

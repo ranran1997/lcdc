@@ -12,7 +12,7 @@ function header(){
         url:"/projects/type/0",
         icon:""
       },{
-        text:"文章",
+        text:"文摘",
         url:"/articles/type/0",
         icon:""
       },{

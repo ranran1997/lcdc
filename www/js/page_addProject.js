@@ -1,8 +1,9 @@
 function page(){
-  $("body").Bar({
-    bar:setting()
+  init(function(){
+    $("body").Bar({
+      bar:setting()
+    })
   })
-  $("body").Code()
   var files=[];
   var url=localUrl()+"?type=upload";
   var croppedImg=null;

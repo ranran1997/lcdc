@@ -1,13 +1,14 @@
 function page(id){
   var hash=getHash();
   var type=catory();
-  $("body").Bar({
-    link:'articles',
-    type:id,
-    nav:articleType(),
-    bar:setting()
+  init(function(){
+    $("body").Bar({
+      link:'articles',
+      type:id,
+      nav:articleType(),
+      bar:setting()
+    })
   })
-  $("body").Code();
   var page=1;
   var pageSize=5;
   var type=id;

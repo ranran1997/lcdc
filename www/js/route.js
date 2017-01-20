@@ -1,9 +1,3 @@
-$.getScript("js/page_header.js",function(){
-  header();
-});
-$.getScript('js/page_footer.js',function(){
-  footer();
-})
 var home = function () {
   $.getScript("js/page_home.js",function(){
     page();
@@ -98,6 +92,12 @@ var photo_list=function(){
     page();
   });
 }
+/*admin */
+var admin_home=function(){
+  $.getScript('js/admin_home.js',function(){
+    page();
+  });
+}
 var routes = {
   '/': home,
   '/projects/type/:Id':project,
@@ -112,26 +112,9 @@ var routes = {
   "/articles/publish":article_publish,
   "/articles/:Id":article,
   "/search/:catory/:type":search,
-  "/photos":photo_list
+  "/photos":photo_list,
+  "/admin":admin_home
 };
 
 var router = Router(routes);
-
 router.init();
-
-
-
-// var home = function () {
-//   console.log()
-// };
-// var books = function () { console.log("books"); };
-// var viewBook = function (bookId) {
-//   console.log("viewBook: bookId is populated: " + bookId);
-// };
-// var routes = {
-//   '/': home,
-//   '/books': [books, function() {
-//     console.log("An inline route handler.");
-//   }],
-//   '/books/view/:bookId': viewBook
-// };

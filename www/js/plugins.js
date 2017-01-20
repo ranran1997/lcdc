@@ -112,6 +112,18 @@ function catory(){
   localStorage.setItem("catory",getHash()[1]);
   return getHash()[1];
 }
+function init(fn){
+  $.getScript("js/page_header.js",function(){
+    header();
+  });
+  $.getScript('js/page_footer.js',function(){
+    footer(function(){
+      fn();
+      $("body").Code();
+      gotop();
+    });
+  })
+}
 ;(function($){  
     $.fn.extend({   
 	//将可选择的变量传递给方法
@@ -155,6 +167,7 @@ function catory(){
             return this.each(function() {  
                 var o = options;  
                 var _this=$(this);
+                console.log(o.bar)
                 nodetpl.get('tpls/footer.tpl', {
                   'type':o.link,
                   'list':o.nav,
@@ -177,6 +190,7 @@ function catory(){
               var _this=$(this);
               console.log("二维码")
               $.getScript('libs/qrcode.min.js',function(){
+                console.log(document.getElementById("qrcode"))
                   var qrcode = new QRCode(document.getElementById("qrcode"), {
                     text:window.location.href,
                     width: 100,

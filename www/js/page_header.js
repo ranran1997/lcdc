@@ -26,6 +26,10 @@ function header(){
         url:"#/home",
         icon:"icon-denglu"
       },{
+        text:"后台管理",
+        url:"#/admin",
+        icon:"icon-xitong"
+      },{
         text:"写文章",
         url:"#/articles/publish",
         icon:"icon-edit"

@@ -1,8 +1,9 @@
 function page(catory,type){
-  $("body").Bar({
-    bar:setting()
+  init(function(){
+    $("body").Bar({
+      bar:setting()
+    })
   })
-  $("body").Code();
   getHash();
   var sendData={
     type:"search",

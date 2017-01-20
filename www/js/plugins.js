@@ -113,6 +113,7 @@ function catory(){
   return getHash()[1];
 }
 function init(fn){
+  gotop();
   $.getScript("js/page_header.js",function(){
     header();
   });
@@ -120,7 +121,6 @@ function init(fn){
     footer(function(){
       fn();
       $("body").Code();
-      gotop();
     });
   })
 }

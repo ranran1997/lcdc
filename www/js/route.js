@@ -94,7 +94,7 @@ var photo_list=function(){
 }
 /*admin */
 var admin_home=function(){
-  $.getScript('js/admin_home.js',function(){
+  $.getScript('js/admin.js',function(){
     page();
   });
 }

@@ -58,7 +58,7 @@ function page(){
     $.getScript('libs/jquery.cookie.js');
     $("#publish").click(function(){
       var title=$('input[name=title]').val();
-      var catory=$('input[name=catory]').val();
+      var catory=$("#type option:selected").val();
       var content=edit.getMarkdown();
       var sendData={
         type:"publish_article",

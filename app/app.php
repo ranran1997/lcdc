@@ -230,8 +230,13 @@
       $text=$_GET["text"];
       $catory='lc_'.$_GET['catory'];
       $start=$_GET['start'];
+      $type=$_GET['fenlei'];
       $pageSize=$_GET['pageSize'];
-      $result=$db->rawQuery("SELECT * FROM ".$catory." where title LIKE '%".$text."%' LIMIT $start,$pageSize");
+      if($type==0){
+        $result=$db->rawQuery("SELECT * FROM ".$catory." where title LIKE '%".$text."%' LIMIT $start,$pageSize");
+      }else{
+        $result=$db->rawQuery("SELECT * FROM ".$catory." where type=$type and title LIKE '%".$text."%' LIMIT $start,$pageSize");
+      }
       echo $jsonp.'('.json_encode($result).')';
     break;
   }

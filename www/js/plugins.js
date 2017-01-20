@@ -97,7 +97,6 @@ function reback(){
 function showbar(){
   $(window).bind('scroll',function(e){
     var top=$(this).scrollTop()
-    console.log(top)
     if(top>40){
       $("body").addClass("show-pageDone");
     }else{

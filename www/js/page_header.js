@@ -38,64 +38,72 @@ function header(){
     nodetpl.get('tpls/header.tpl', data, function(d){
       document.querySelector("#header").innerHTML=d;
       /*搜索 */
-      var hash=getHash();
-      var type=catory();
+      var hash=localStorage.getItem("hash").split("/");
+      var catory=localStorage.getItem("catory");
       $(".search .iconfont").click(function(){
         var _this=$(this)
         var str=localStorage.getItem("hash").split("/");
         var type=str[str.length-1];
-        window.location.href="#/search/"+localStorage.getItem("catory")+"/"+type;
+        //window.location.href="#/search/"+localStorage.getItem("catory")+"/"+type;
         if($(this).siblings("input").val()!=""){
-          search(_this.parents('input').val(),_this.parents(".search"));
+          turn($(".search input"),catory);
         }else{
-          //$("body").toggleClass("show-search");
+          $("body").toggleClass("show-search");
         }
       })
       $(".search input").keydown(function(e){
         var _this=$(this);
         if(e.keyCode==13){
-          search(_this.val(),_this.parents(".search"));
+          turn(_this,catory);
         }
       })
-      function search(val,search){
-        var sendData={
-          type:"search",
-          text:val,
-          catory:type,
-          start:0,
-          pageSize:10,
-          page:1
-        }
-        $.ajax({
-          type:'get',
-          url:localUrl(),
-          data:sendData,
-          dataType:"jsonp",
-          jsonp:"callback",
-          beforeSend:function(){
-            search.addClass("loading");
-            nodetpl.get('tpls/loading.tpl',null, function(d){
-              document.title="加载中";
-              document.querySelector("#view").innerHTML=d;
-            });
-          },
-          success:function(data){
-            search.removeClass("loading");
-            nodetpl.get('tpls/search_result.tpl',{
-              'list':data
-            }, function(d){
-              document.title="加载中";
-              document.querySelector("#view").innerHTML=d;
-            });
-            console.log(data)
-          },
-          error: function(XMLHttpRequest, textStatus, errorThrown) {
-            alert(XMLHttpRequest.status);
-            alert(XMLHttpRequest.readyState);
-            alert(textStatus);
-          }
-        });
-      }
     });
+  });
+}
+function turn(_this,catory){
+  if(_this.val()=="") return false;
+  window.location.href="#/search/"+catory+"/"+_this.val();
+  localStorage.setItem("search",_this.val())
+}
+function search(val,search){
+  var sendData={
+    type:"search",
+    text:val,
+    catory:catory,
+    fenlei:type,
+    start:0,
+    pageSize:10,
+    page:1
+  }
+  $.ajax({
+    type:'get',
+    url:localUrl(),
+    data:sendData,
+    dataType:"jsonp",
+    jsonp:"callback",
+    beforeSend:function(){
+      console.log(sendData);
+      search.addClass("loading");
+      nodetpl.get('tpls/loading.tpl',null, function(d){
+        document.title="加载中";
+        document.querySelector("#view").innerHTML=d;
+      });
+    },
+    success:function(data){
+      window.location.href="#/search/"+sendData.fenlei+"/"+sendData.text;
+      search.removeClass("loading");
+      nodetpl.get('tpls/search_result.tpl',{
+        'list':data
+      }, function(d){
+        document.title="加载中";
+        document.querySelector("#view").innerHTML=d;
+      });
+      console.log(data)
+    },
+    error: function(XMLHttpRequest, textStatus, errorThrown) {
+      alert(XMLHttpRequest.status);
+      alert(XMLHttpRequest.readyState);
+      alert(textStatus);
+    }
   });
 }

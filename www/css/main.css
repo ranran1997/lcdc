@@ -6,7 +6,7 @@ a{text-decoration:none;}
 input:focus,textarea:focus,select:focus{outline:none;}
 i{font-style:normal;}
 *{box-sizing: border-box;}
-.mid-layout{width:1300px;margin:0 auto;}
+.mid-layout{width:1300px !important;margin:0 auto;}
 .auto{margin-left:auto;margin-right:auto;}
 .row{display:inline-table;table-layout:fixed;}
 .col{display:table-cell;}

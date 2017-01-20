@@ -207,8 +207,8 @@ i{font-style:normal;}
 
 /*admin*/
 .page.admin{padding:68px 0 0 150px;box-sizing: border-box;height:100%;font-size:0;background:#eee;}
-.page.admin .header{height:68px;background:#559EFE;margin:-68px 0 0 -150px;font-size:14px;padding:0 1em;box-sizing: border-box;position:static;display:block;width:auto;}
-.page.admin .aside{width:150px;height:100%;background:#447DC8;margin-left:-150px;display:inline-block;font-size:12px;float:left;}
+.page.admin .header{height:68px;background:#393D49;margin:-68px 0 0 -150px;font-size:14px;padding:0 1em;box-sizing: border-box;position:static;display:block;width:auto;}
+.page.admin .aside{width:150px;height:100%;background:#3E4048;margin-left:-150px;display:inline-block;font-size:12px;float:left;}
 .scroll{height:100%;}
 .page.admin .content{display:inline-block;width:100%;height:100%;font-size:12px;padding:1em;box-sizing: border-box;}
 .content.with-search{padding-top:5em;}
@@ -220,7 +220,7 @@ i{font-style:normal;}
 .admin .header .iconfont{color:#BFDDFF;margin-right:0.4em;vertical-align: middle;}
 /*menu*/
 .admin .menu a{position:relative;}
-.admin .menu .row{padding:1em 0;font-size:15px;color:#fff;box-sizing: border-box;text-align:left;border-bottom:1px solid #5E91D0;}
+.admin .menu .row{padding:1em 0;font-size:15px;color:#fff;box-sizing: border-box;text-align:left;border-bottom:1px solid #525258;}
 .admin .menu .iconfont{color:#BFDDFF;text-align:center;width:30%;}
 .admin .menu .iconfont:before{position:relative;top:2px;}
 .admin .sub-menu{border-bottom:1px solid #5E91D0;background:#3F73B8;display:none;}

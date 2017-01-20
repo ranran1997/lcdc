@@ -15,15 +15,18 @@
   <div class="aside">
     <div class="scroll" id="menu">
       <ul class="menu">
-        <li>
-          <a class="row w" href="#"><span class="col v-m iconfont"></span><span class="col v-m">首<i class="ib" style="width:2em;"></i>页</span></a>
-        </li>
-        <li>
-          <a class="row w" href="#"><span class="col v-m iconfont"></span><span class="col v-m">统计分析</span></a>
-        </li>
-        <li>
-          <a class="row w" href="#"><span class="col v-m iconfont"></span><span class="col v-m">其他系统</span></a>
-        </li>
+        <?for(var i=0;i<@menu.length;i++){?>
+          <li>
+            <a class="row w" href="#"><span class="col v-m iconfont"></span><span class="col v-m"><?=@menu[i].text?></span></a>
+            <?if(@menu[i].sub.length>0){?>
+              <ul class="sub-menu">
+                <?for(var j=0;j<@menu[i].sub.length;j++){?>
+                  <li><a href="#"><?=@menu[i].sub[j].text?></a></li>
+                <?}?>
+              </ul>
+            <?}?>
+          </li>
+        <?}?>
       </ul>
     </div>
   </div>

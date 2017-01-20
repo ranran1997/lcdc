@@ -72,6 +72,30 @@ function projectType(){
 function articleType(){
   return ['全部','基础','技巧','分享','插件','框架'];
 }
+function adminMenu(){
+  return [{
+    icon:"icon-tongji",
+    text:"统计",
+    url:""
+  },{
+    icon:"icon-projects",
+    text:"项目管理",
+    url:"",
+    sub:[{
+      icon:"",
+      text:"项目列表",
+      url:""
+    },{
+      icon:"",
+      text:"添加",
+      url:""
+    },{
+      icon:"",
+      text:"统计",
+      url:""
+    }]
+  }]
+}
 function initFooter(){}
 function setting(){
   return [{

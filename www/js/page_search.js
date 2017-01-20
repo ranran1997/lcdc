@@ -6,7 +6,7 @@ function page(catory,type){
   getHash();
   var sendData={
     type:"search",
-    text:localStorage.getItem("search"),
+    text:unescape(localStorage.getItem("search")),
     catory:catory,
     fenlei:0,
     start:0,

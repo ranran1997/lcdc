@@ -93,6 +93,9 @@ var search=function(c,t){
     page(c,t);
   })
 }
+var photo_list=function(){
+  
+}
 var routes = {
   '/': home,
   '/projects/type/:Id':project,
@@ -106,7 +109,8 @@ var routes = {
   '/articles/type/:Id':articles,
   "/articles/publish":article_publish,
   "/articles/:Id":article,
-  "/search/:catory/:type":search
+  "/search/:catory/:type":search,
+  "/photos":photo_list
 };
 
 var router = Router(routes);

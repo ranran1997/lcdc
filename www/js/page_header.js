@@ -15,6 +15,10 @@ function header(){
         text:"文章",
         url:"/articles/type/0",
         icon:""
+      },{
+        text:"图库",
+        url:"/photos",
+        icon:""
       }],
       "user":login,
       "submenu":[{
@@ -38,8 +42,6 @@ function header(){
     nodetpl.get('tpls/header.tpl', data, function(d){
       document.querySelector("#header").innerHTML=d;
       /*搜索 */
-      var hash=localStorage.getItem("hash").split("/");
-      var catory=localStorage.getItem("catory");
       $(".search .iconfont").click(function(){
         var _this=$(this)
         var str=localStorage.getItem("hash").split("/");
@@ -61,9 +63,11 @@ function header(){
   });
 }
 function turn(_this,catory){
+  var hash=localStorage.getItem("hash").split("/");
+  var catory=localStorage.getItem("catory");
   if(_this.val()=="") return false;
-  window.location.href="#/search/"+catory+"/"+_this.val();
-  localStorage.setItem("search",_this.val())
+  window.location.href="#/search/"+catory+"/"+escape(_this.val());
+  localStorage.setItem("search",escape(_this.val()))
 }
 function search(val,search){
   var sendData={

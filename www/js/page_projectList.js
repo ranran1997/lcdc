@@ -12,7 +12,10 @@ function page(id){
   var pageSize=8;
   var type=id;
   load(type,page,pageSize,function(){
-    nodetpl.get('tpls/loading.tpl',null, function(d){
+    nodetpl.get('tpls/loading.tpl',{
+        'img':"img/search.gif",
+        'text':"文章加载中"
+      }, function(d){
       document.title="加载中";
       document.querySelector("#view").innerHTML=d;
     });

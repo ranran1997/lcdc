@@ -17,7 +17,10 @@ function page(id){
     dataType:"jsonp",
     jsonp:"callback",
     beforeSend:function(_this){
-      nodetpl.get('tpls/loading.tpl',null, function(d){
+      nodetpl.get('tpls/loading.tpl',{
+        'img':"img/search.gif",
+        'text':"文章加载中"
+      }, function(d){
         document.title="加载中";
         document.querySelector("#view").innerHTML=d;
       });

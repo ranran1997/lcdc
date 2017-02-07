@@ -19,6 +19,7 @@ class user extends dbObject {
     protected $dbFields = Array (
         'login' => Array ('text', 'required'),
         'active' => Array ('bool'),
+        'face' => Array('text'),
         'customerId' => Array ('int'),
         'userName' => Array ('/[a-zA-Z0-9 ]+/'),
         'password' => Array ('text'),

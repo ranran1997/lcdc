@@ -4,6 +4,7 @@
       'users' => Array (
           'login' => 'char(10) not null',
           'active' => 'bool default 0',
+          'face' => 'char(100)',
           'customerId' => 'int(10) not null',
           'userName' => 'char(10) not null',
           'email' => 'text not null',

@@ -1,4 +1,5 @@
 <?
+  header('Access-Control-Allow-Origin:*');
   require_once('conn.php');
   $user=dbObject::table("users");
   $article=dbObject::table("articles");
@@ -14,7 +15,7 @@
   }
   switch($type){
     //注册
-    case 'reg':
+    case 'register':
       $username=$_GET["username"];
       $pwd=md5($_GET["password"]);
       $email=$_GET["email"];
@@ -38,6 +39,7 @@
       $user->password=$pwd;
       $user->email=$email;
       $user->customerId=$random;
+      $user->createdAt=date("Y-m-d h:i:s");
       $id=$user->save();
       if($id){
         $result=array(
@@ -77,8 +79,7 @@
       $result=array(
         'id'=>$stats[id],
         'type'=>"login",
-        'username'=>$username,
-        "pwd"=>md5($password)
+        'username'=>$username
       );
       echo $jsonp.'('.json_encode($result).')';
     break;
@@ -248,6 +249,32 @@
       //   $db->where("secret",$secret);
       // }
       $stats=$db->arraybuilder()->paginate("ablums",$page);
+      echo $jsonp.'('.json_encode($stats).')';
+    break;
+    case 'crop':
+      $data=$_GET['img'];
+      $user=$_GET['user'];
+      $img=explode(',',$data);
+      $url='crop/'.md5($user).date("Ymdhis").'.jpg';
+      $file=file_put_contents($url,base64_decode($img[1]));
+      if($file){
+        $data=array(
+          'face'=>$url
+        );
+        $db->where('userName',$user);
+        if($db->update('users',$data)){
+          $result=array(
+            'url'=>$url,
+            'content'=>$data
+          );
+          echo $jsonp.'('.json_encode($result).')';
+        }
+      }
+    break;
+    case 'get_user':
+      $user=$_GET['name'];
+      $db->where("userName",$user);
+      $stats=$db->getOne("users");
       echo $jsonp.'('.json_encode($stats).')';
     break;
   }
